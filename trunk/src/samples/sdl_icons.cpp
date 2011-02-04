@@ -1,4 +1,10 @@
-#include "icons.h"
+/**
+ * Copyright (C) SDL Logo by Arne Claus (priest AT seraphim DOT info).
+ *
+ * http://www.libsdl.de/logo/
+ */
+
+#include "sdl_icons.h"
 
 /* XPM */
 const char* sdl_powered_32_xpm[] = {

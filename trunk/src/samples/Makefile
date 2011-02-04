@@ -8,9 +8,9 @@ LDFLAGS = -lSDL_ttf -lSDL_image -lSDL
 
 PROGRAMS = imgview fontview
 
-SRCS = imgview.cpp fontview.cpp icons.cpp vera.cpp
+SRCS = imgview.cpp fontview.cpp bitstream_vera.cpp sdl_icons.cpp
 
-OBJS = icons.o vera.o
+OBJS = bitstream_vera.o sdl_icons.o
 
 LIBS = ../libjacui.a
 
