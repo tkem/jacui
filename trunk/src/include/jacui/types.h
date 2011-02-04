@@ -125,8 +125,6 @@ namespace jacui {
     public:
         color() : r(0), g(0), b(0), a(0) { }
 
-        explicit color(int gray) : r(gray), g(gray), b(gray), a(0xff) { }
-
         color(int red, int green, int blue) : r(red), g(green), b(blue), a(0xff) { }
 
         color(int red, int green, int blue, int alpha) : r(red), g(green), b(blue), a(alpha) { }
