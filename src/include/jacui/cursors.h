@@ -36,8 +36,6 @@ namespace jacui {
         extern const cursor arrow; // 'auto' and 'default' were not an option
 
         extern const cursor crosshair;
-        extern const cursor pointer;
-        extern const cursor move;
 
         extern const cursor n_resize;
         extern const cursor s_resize;
@@ -48,11 +46,6 @@ namespace jacui {
         extern const cursor nw_resize;
         extern const cursor se_resize;
         extern const cursor sw_resize;
-
-        extern const cursor text;
-        extern const cursor wait;
-        extern const cursor progress;
-        extern const cursor help;
     }
 }
 
