@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "window.h"
+#include "jacui/window.h"
 #include "detail.h"
 
 #include <algorithm>

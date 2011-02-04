@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "event.h"
+#include "jacui/event.h"
 #include "detail.h"
 
 namespace jacui {

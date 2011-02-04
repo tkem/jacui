@@ -1,11 +1,11 @@
 #include "icons.h"
 #include "vera.h"
 
-#include "window.h"
-#include "event.h"
-#include "image.h"
-#include "font.h"
-#include "cursors.h"
+#include "jacui/window.h"
+#include "jacui/event.h"
+#include "jacui/image.h"
+#include "jacui/font.h"
+#include "jacui/colors.h"
 
 #include <boost/lexical_cast.hpp>
 
@@ -229,7 +229,7 @@ void draw(surface& s, const font& f, const char* text)
     int x = s.width() - txtsz.width - 8;
     int y = s.height() - 8;
 
-    f.draw(s, text, make_rgb(0xff0000), x, y);
+    f.draw(s, text, colors::black, x, y);
 }
 
 std::string filename(const std::string& path)

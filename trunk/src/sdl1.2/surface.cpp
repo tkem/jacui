@@ -3,9 +3,9 @@
 //   $Id$
 //
 
-#include "surface.h"
+#include "jacui/surface.h"
 #include "detail.h"
-#include "error.h"
+#include "jacui/error.h"
 
 #include <cassert>
 

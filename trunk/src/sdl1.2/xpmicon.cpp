@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "xpmicon.h"
+#include "jacui/xpmicon.h"
 #include "detail.h"
 
 #include <SDL/SDL_image.h>

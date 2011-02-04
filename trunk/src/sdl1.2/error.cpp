@@ -3,4 +3,4 @@
 //   $Id$
 //
 
-#include "error.h"
+#include "jacui/error.h"

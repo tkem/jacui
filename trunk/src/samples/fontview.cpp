@@ -1,10 +1,10 @@
 #include "icons.h"
 #include "vera.h"
 
-#include "window.h"
-#include "event.h"
-#include "font.h"
-#include "colors.h"
+#include "jacui/window.h"
+#include "jacui/event.h"
+#include "jacui/font.h"
+#include "jacui/colors.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/lexical_cast.hpp>

@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "colors.h"
+#include "jacui/colors.h"
 
 namespace jacui {
     namespace colors {

@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "cursors.h"
+#include "jacui/cursors.h"
 
 namespace {
     const char* arrow_xpm[] = {

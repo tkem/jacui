@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "cursor.h"
+#include "jacui/cursor.h"
 #include "detail.h"
 
 #include <algorithm>

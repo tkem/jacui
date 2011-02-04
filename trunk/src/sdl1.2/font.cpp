@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "font.h"
+#include "jacui/font.h"
 #include "detail.h"
 
 #include <SDL/SDL_ttf.h>
