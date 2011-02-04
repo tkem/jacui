@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "canvas.h"
+#include "jacui/canvas.h"
 #include "detail.h"
 
 namespace {

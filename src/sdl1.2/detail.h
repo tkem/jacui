@@ -6,9 +6,9 @@
 #ifndef JACUI_SDL_1_2_DETAIL_H
 #define JACUI_SDL_1_2_DETAIL_H
 
-#include "event.h"
-#include "error.h"
-#include "types.h"
+#include "jacui/event.h"
+#include "jacui/error.h"
+#include "jacui/types.h"
 
 #include <SDL/SDL.h>
 

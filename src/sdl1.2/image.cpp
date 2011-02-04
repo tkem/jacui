@@ -3,7 +3,7 @@
 //   $Id$
 //
 
-#include "image.h"
+#include "jacui/image.h"
 #include "detail.h"
 
 #include <algorithm>
