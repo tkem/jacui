@@ -34,9 +34,7 @@
 #include "jacui/font.h"
 #include "jacui/colors.h"
 
-#include <boost/shared_ptr.hpp>
-#include <boost/lexical_cast.hpp>
-
+#include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -79,7 +77,7 @@ int main(int argc, char* argv[])
             break;
 
         case 's':
-            ptsize = boost::lexical_cast<float>(::optarg);
+            ptsize = std::strtof(::optarg, 0);
             break;
 
         case 'u':
@@ -87,7 +85,7 @@ int main(int argc, char* argv[])
             break;
 
         case 'y':
-            dy = boost::lexical_cast<int>(::optarg);
+            dy = std::strtol(::optarg, 0, 0);
             break;
 
         default:

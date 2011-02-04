@@ -35,8 +35,6 @@
 #include "jacui/font.h"
 #include "jacui/colors.h"
 
-#include <boost/lexical_cast.hpp>
-
 #include <algorithm>
 #include <iostream>
 #include <cctype>
@@ -329,11 +327,11 @@ int main(int argc, char* argv[])
             break;
 
         case 'h':
-            height = boost::lexical_cast<std::size_t>(::optarg);
+            height = std::strtoul(::optarg, 0, 0);
             break;
 
         case 'i':
-            interval = boost::lexical_cast<unsigned long>(::optarg);
+            interval = std::strtoul(::optarg, 0, 0);
             break;
 
         case 'n':
@@ -345,7 +343,7 @@ int main(int argc, char* argv[])
             break;
 
         case 'w':
-            width = boost::lexical_cast<std::size_t>(::optarg);
+            width = std::strtoul(::optarg, 0, 0);
             break;
 
         default:
