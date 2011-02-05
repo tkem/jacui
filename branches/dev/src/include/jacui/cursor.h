@@ -1,0 +1,74 @@
+/**
+ * JACUI - Just Another C++ User Interface Library
+ *
+ * Copyright (C) 2011 The JACUI Project <perlkoenig@gmail.com>
+ *
+ * http://code.google.com/p/jacui/
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+#ifndef JACUI_CURSOR_H
+#define JACUI_CURSOR_H
+
+#include "types.h"
+
+namespace jacui {
+    /**
+       \brief JACUI cursor class
+    */
+    class cursor {
+    public:
+        cursor(const cursor& rhs);
+
+        cursor(const void* data, const void* mask, size2d size, point2d point);
+
+        cursor(const char* xpm[], std::size_t x, std::size_t y);
+
+        ~cursor();
+
+        const void* data() const;
+
+        const void* mask() const;
+
+        size2d size() const;
+
+        point2d point() const;
+
+        void swap(cursor& rhs);
+
+        cursor& operator=(const cursor& rhs) {
+            cursor tmp(rhs);
+            swap(tmp);
+            return *this;
+        }
+
+    private:
+        struct impl;
+        impl* pimpl_;
+    };
+
+    inline void swap(cursor& lhs, cursor& rhs) {
+        rhs.swap(lhs);
+    }
+}
+
+#endif
