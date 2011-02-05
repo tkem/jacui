@@ -11,9 +11,7 @@ LIBNAME = libjacui
 
 LIB = ../$(LIBNAME).a
 
-SRCS =	canvas.cpp colors.cpp cursor.cpp cursors.cpp detail.cpp \
-	event.cpp error.cpp font.cpp image.cpp surface.cpp \
-	types.cpp window.cpp xpmicon.cpp
+SRCS =	canvas.cpp detail.cpp event.cpp error.cpp font.cpp image.cpp surface.cpp types.cpp window.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

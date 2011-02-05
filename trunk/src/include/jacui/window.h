@@ -31,8 +31,6 @@
 
 #include "surface.h"
 #include "event.h"
-#include "cursor.h"
-#include "xpmicon.h"
 
 #include <string>
 
@@ -56,12 +54,6 @@ namespace jacui {
 
         window(const std::string& title, std::size_t width, std::size_t height, flags_type f = 0);
 
-        window(const std::string& title, const xpmicon& icon, flags_type f = 0);
-
-        window(const std::string& title, const xpmicon& icon, size2d size, flags_type f = 0);
-
-        window(const std::string& title, const xpmicon& icon, std::size_t width, std::size_t height, flags_type f = 0);
-
         ~window();
 
         size2d size() const;
@@ -72,7 +64,7 @@ namespace jacui {
 
         std::string title() const;
 
-        std::string title(const std::string& s);
+        void title(const std::string& s);
 
         surface& view();
 
@@ -83,8 +75,6 @@ namespace jacui {
         const event_queue& events() const;
 
         void cursor(bool enable);
-
-        void cursor(const jacui::cursor& c);
 
         void resize(size2d size);
 
