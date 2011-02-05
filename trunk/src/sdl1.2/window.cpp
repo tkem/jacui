@@ -141,6 +141,11 @@ namespace jacui {
         SDL_ShowCursor(enable ? SDL_ENABLE : SDL_DISABLE);
     }
 
+    void window::cursor(const jacui::cursor& c)
+    {
+        SDL_SetCursor(c.detail());
+    }
+
     void window::resize(size2d size)
     {
         return resize(size.width, size.height);

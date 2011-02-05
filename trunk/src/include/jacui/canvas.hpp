@@ -59,7 +59,7 @@ namespace jacui {
             return *this;
         }
 
-    protected:
+    public:
         detail::surface_type* detail() const;
 
     private:

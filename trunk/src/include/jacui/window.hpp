@@ -30,6 +30,7 @@
 #define JACUI_WINDOW_HPP
 
 #include "surface.hpp"
+#include "cursor.hpp"
 #include "event.hpp"
 
 #include <string>
@@ -75,6 +76,8 @@ namespace jacui {
         const event_queue& events() const;
 
         void cursor(bool enable);
+
+        void cursor(const jacui::cursor& c);
 
         void resize(size2d size);
 

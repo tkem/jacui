@@ -26,49 +26,45 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_IMAGE_HPP
-#define JACUI_IMAGE_HPP
+#ifndef JACUI_CURSOR_HPP
+#define JACUI_CURSOR_HPP
 
-#include "surface.hpp"
+#include "types.hpp"
 
 namespace jacui {
+    namespace detail {
+        struct cursor_type;
+    }
+
     /**
-       \brief JACUI image class
+       \brief JACUI cursor class
     */
-    class image: public surface {
+    class cursor {
     public:
-        image();
+        cursor(const void* data, const void* mask, size2d size, point2d point);
 
-        image(const image& rhs);
+        cursor(const cursor& rhs);
 
-        explicit image(const char* filename);
+        ~cursor();
 
-        image(const void* data, std::size_t size);
+        void swap(cursor& rhs);
 
-        ~image();
-
-        void load(const char* filename);
-
-        void load(const void* data, std::size_t size);
-
-        void swap(image& rhs);
-
-        image& operator=(const image& rhs) {
-            image tmp(rhs);
+        cursor& operator=(const cursor& rhs) {
+            cursor tmp(rhs);
             swap(tmp);
             return *this;
         }
 
     public:
-        detail::surface_type* detail() const;
+        detail::cursor_type* detail() const;
 
     private:
         struct impl;
         impl* pimpl_;
     };
 
-    inline void swap(image& lhs, image& rhs) {
-        lhs.swap(rhs);
+    inline void swap(cursor& lhs, cursor& rhs) {
+        rhs.swap(lhs);
     }
 }
 

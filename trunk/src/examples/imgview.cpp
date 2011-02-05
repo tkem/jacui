@@ -28,6 +28,7 @@
 
 #include "bitstream_vera.hpp"
 #include "jacui/window.hpp"
+#include "jacui/cursors.hpp"
 #include "jacui/image.hpp"
 #include "jacui/font.hpp"
 
@@ -360,6 +361,7 @@ int main(int argc, char* argv[])
     image img(argv[index]);
     font fnt(bitstream_vera_ttf, sizeof bitstream_vera_ttf, 12);
     window win(filename(argv[index]), width, height, flags);
+    win.cursor(cursors::crosshair());
 
     update(win, img, fnt, argv[index]);
 
