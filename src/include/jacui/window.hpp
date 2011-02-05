@@ -26,49 +26,72 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_IMAGE_H
-#define JACUI_IMAGE_H
+#ifndef JACUI_WINDOW_HPP
+#define JACUI_WINDOW_HPP
 
-#include "surface.h"
+#include "surface.hpp"
+#include "event.hpp"
+
+#include <string>
 
 namespace jacui {
     /**
-       \brief JACUI image class
+       \brief JACUI window class
     */
-    class image: public surface {
+    class window {
     public:
-        image();
+        typedef unsigned int flags_type;
+        static const flags_type fullscreen;
+        static const flags_type noresize;
+        static const flags_type noframe;
 
-        image(const image& rhs);
+        typedef timer_event::timer_type timer_type;
 
-        explicit image(const char* filename);
+    public:
+        explicit window(const std::string& title, flags_type f = 0);
 
-        image(const void* data, std::size_t size);
+        window(const std::string& title, size2d size, flags_type f = 0);
 
-        ~image();
+        window(const std::string& title, std::size_t width, std::size_t height, flags_type f = 0);
 
-        void load(const char* filename);
+        ~window();
 
-        void load(const void* data, std::size_t size);
+        size2d size() const;
 
-        void swap(image& rhs);
+        std::size_t width() const;
 
-        image& operator=(const image& rhs) {
-            image tmp(rhs);
-            swap(tmp);
-            return *this;
-        }
+        std::size_t height() const;
 
-    protected:
-        detail::surface_type* detail() const;
+        std::string title() const;
+
+        void title(const std::string& s);
+
+        surface& view();
+
+        const surface& view() const;
+
+        event_queue& events();
+
+        const event_queue& events() const;
+
+        void cursor(bool enable);
+
+        void resize(size2d size);
+
+        void resize(std::size_t width, std::size_t height);
+
+        void update();
+
+        void close();
 
     private:
-        detail::surface_type* detail_;
-    };
+        window(const window&);
+        window& operator=(const window&);
 
-    inline void swap(image& lhs, image& rhs) {
-        lhs.swap(rhs);
-    }
+    private:
+        struct impl;
+        impl* pimpl_;
+    };
 }
 
 #endif

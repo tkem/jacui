@@ -26,13 +26,8 @@
  * SOFTWARE.
  */
 
-#include "jacui/window.h"
-#include "detail.h"
-
-#include <algorithm>
-#include <map>
-
-using namespace jacui::detail;
+#include "jacui/window.hpp"
+#include "detail.hpp"
 
 namespace {
     class wmsurface: public jacui::surface {
@@ -40,9 +35,9 @@ namespace {
         wmsurface() {
         }
 
-        surface_type* detail() const
+        jacui::detail::surface_type* detail() const
         {
-            return make_surface(SDL_GetVideoSurface());
+            return jacui::detail::make_surface(SDL_GetVideoSurface());
         }
     };
 
@@ -61,7 +56,7 @@ namespace jacui {
             if (title)
                 SDL_WM_SetCaption(title, title);
             if (!SDL_SetVideoMode(width, height, 24, make_flags(f)))
-                throw_error("error setting video mode");
+                detail::throw_error("error setting video mode");
         }
 
         wmsurface surface;
@@ -156,9 +151,9 @@ namespace jacui {
         SDL_Surface* s = SDL_GetVideoSurface();
 
         if (!s)
-            throw_error("error resizing window");
+            detail::throw_error("error resizing window");
         if (!SDL_SetVideoMode(width, height, 0, s->flags))
-            throw_error("error resizing window");
+            detail::throw_error("error resizing window");
     }
 
     void window::update()

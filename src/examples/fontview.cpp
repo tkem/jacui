@@ -26,11 +26,9 @@
  * SOFTWARE.
  */
 
-#include "bitstream_vera.h"
-
-#include "jacui/window.h"
-#include "jacui/event.h"
-#include "jacui/font.h"
+#include "bitstream_vera.hpp"
+#include "jacui/window.hpp"
+#include "jacui/font.hpp"
 
 #include <cstdlib>
 #include <iostream>

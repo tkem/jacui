@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#include "jacui/font.h"
-#include "detail.h"
+#include "jacui/font.hpp"
+#include "detail.hpp"
 
 #include <SDL/SDL_ttf.h>
 

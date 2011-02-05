@@ -26,35 +26,35 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_CANVAS_H
-#define JACUI_CANVAS_H
+#ifndef JACUI_IMAGE_HPP
+#define JACUI_IMAGE_HPP
 
-#include "surface.h"
+#include "surface.hpp"
 
 namespace jacui {
     /**
-       \brief JACUI canvas class
+       \brief JACUI image class
     */
-    class canvas: public surface {
+    class image: public surface {
     public:
-        canvas();
+        image();
 
-        canvas(const canvas& rhs);
+        image(const image& rhs);
 
-        explicit canvas(size2d size);
+        explicit image(const char* filename);
 
-        canvas(std::size_t width, std::size_t height);
+        image(const void* data, std::size_t size);
 
-        ~canvas();
+        ~image();
 
-        void resize(size2d size);
+        void load(const char* filename);
 
-        void resize(std::size_t width, std::size_t height);
+        void load(const void* data, std::size_t size);
 
-        void swap(canvas& rhs);
+        void swap(image& rhs);
 
-        canvas& operator=(const canvas& rhs) {
-            canvas tmp(rhs);
+        image& operator=(const image& rhs) {
+            image tmp(rhs);
             swap(tmp);
             return *this;
         }
@@ -66,7 +66,7 @@ namespace jacui {
         detail::surface_type* detail_;
     };
 
-    inline void swap(canvas& lhs, canvas& rhs) {
+    inline void swap(image& lhs, image& rhs) {
         lhs.swap(rhs);
     }
 }

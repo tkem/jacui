@@ -26,7 +26,7 @@
  * SOFTWARE.
  */
 
-#include "detail.h"
+#include "detail.hpp"
 
 #include <SDL/SDL_ttf.h>
 

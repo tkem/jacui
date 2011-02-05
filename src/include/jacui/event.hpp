@@ -26,10 +26,10 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_EVENT_H
-#define JACUI_EVENT_H
+#ifndef JACUI_EVENT_HPP
+#define JACUI_EVENT_HPP
 
-#include "types.h"
+#include "types.hpp"
 
 namespace jacui {
     /**
