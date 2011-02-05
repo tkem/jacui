@@ -142,13 +142,13 @@ int main(int argc, char* argv[])
     canvas c = unicode ? f.render(wtext, fg, bg) : f.render(text, fg, bg);
 
     if (use_canvas) {
-        win.surface().blit(c);
+        win.view().blit(c);
     } else {
-        win.surface().fill(bg);
+        win.view().fill(bg);
         if (unicode) {
-            f.draw(win.surface(), wtext, fg, 0, f.ascent() + dy);
+            f.draw(win.view(), wtext, fg, 0, f.ascent() + dy);
         } else {
-            f.draw(win.surface(), text, fg, 0, f.ascent() + dy);
+            f.draw(win.view(), text, fg, 0, f.ascent() + dy);
         }
     }
     
@@ -158,13 +158,13 @@ int main(int argc, char* argv[])
         switch (pe->type()) {
         case event::redraw:
             if (use_canvas) {
-                win.surface().blit(c, win.size());
+                win.view().blit(c, win.size());
             } else {
-                win.surface().fill(bg);
+                win.view().fill(bg);
                 if (unicode) {
-                    f.draw(win.surface(), wtext, fg, 0, f.ascent() + dy);
+                    f.draw(win.view(), wtext, fg, 0, f.ascent() + dy);
                 } else {
-                    f.draw(win.surface(), text, fg, 0, f.ascent() + dy);
+                    f.draw(win.view(), text, fg, 0, f.ascent() + dy);
                 }
             }
             win.update();

@@ -267,8 +267,8 @@ std::string filename(const std::string& path)
 void update(window& win, const image& img, const font& f, const char* path)
 {
     win.title(filename(path));
-    win.surface().blit(img, win.size());
-    draw(win.surface(), f, path);
+    win.view().blit(img, win.size());
+    draw(win.view(), f, path);
     win.update();
 }
 
@@ -282,12 +282,12 @@ void update(window& win, const image& img, const font& f, const char* path, poin
 
     win.title(filename(path));
     if (win.width() > img.width() || win.height() > img.height()) {
-        win.surface().fill(make_rgb(0));
+        win.view().fill(make_rgb(0));
     }
-    win.surface().blit(
+    win.view().blit(
         img, make_centered(rect2d(x, y, imgsz.width, imgsz.height), winsz), point2d()
         );
-    draw(win.surface(), f, path);
+    draw(win.view(), f, path);
     win.update();
 }
 
