@@ -252,7 +252,7 @@ void draw(surface& s, const font& f, const char* text)
     int x = s.width() - txtsz.width - 8;
     int y = s.height() - 8;
 
-    f.draw(s, text, make_rgb(0x00), x, y);
+    f.draw(s, text, make_rgb(0xff0000), x, y);
 }
 
 std::string filename(const std::string& path)
