@@ -432,7 +432,7 @@ int main(int argc, char* argv[])
                 // programmatic resize does not trigger redraw event!
                 update(win, img, fnt, argv[index]);
             } else if (ke->key() == keyboard_event::esc || ke->key() == 'Q') {
-                win.quit();
+                win.close();
             }
 
             break;

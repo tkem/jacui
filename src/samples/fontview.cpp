@@ -174,7 +174,7 @@ int main(int argc, char* argv[])
             switch (dynamic_cast<keyboard_event*>(pe)->key()) {
             case 'Q':
             case '\033':
-                win.quit();
+                win.close();
             }
             break;
         }
