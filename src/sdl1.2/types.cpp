@@ -26,4 +26,4 @@
  * SOFTWARE.
  */
 
-#include "../jacui/types.hpp"
+#include "jacui/types.hpp"
