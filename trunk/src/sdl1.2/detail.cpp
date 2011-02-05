@@ -271,7 +271,13 @@ namespace jacui {
             case SDL_MOUSEBUTTONDOWN:
                 return event_.button.button;
             case SDL_MOUSEMOTION:
-                return 0; // TODO: SDL_BUTTON(event.motion.state)
+                if (event_.motion.state & SDL_BUTTON(1))
+                    return lbutton;
+                if (event_.motion.state & SDL_BUTTON(2))
+                    return mbutton;
+                if (event_.motion.state & SDL_BUTTON(3))
+                    return rbutton;
+                return 0;
             default:
                 return 0;
             }
