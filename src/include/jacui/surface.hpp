@@ -83,7 +83,7 @@ namespace jacui {
 
         void blit(const surface& s, rect2d src, int x, int y);
 
-    protected:
+    public:
         virtual detail::surface_type* detail() const = 0;
     };
 }

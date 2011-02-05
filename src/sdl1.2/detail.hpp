@@ -39,6 +39,10 @@
 
 namespace jacui {
     namespace detail {
+        struct surface_type: public SDL_Surface { };
+
+        struct cursor_type: public SDL_Cursor { };
+
         // convert SDL error to sdl exception
         inline void throw_error(const std::string& msg)
         {
@@ -47,8 +51,6 @@ namespace jacui {
             SDL_ClearError();
             throw e;
         }
-
-        struct surface_type: public SDL_Surface { };
 
         class surface_lock {
         public:
@@ -165,6 +167,12 @@ namespace jacui {
 
         inline surface_type* copy_surface(surface_type* p) {
             return p ? make_surface(SDL_ConvertSurface(p, p->format, p->flags)) : 0;
+        }
+
+        inline cursor_type* make_cursor(SDL_Cursor* p) {
+            if (!p)
+                throw_error("error creating cursor");
+            return static_cast<cursor_type*>(p);
         }
 
         inline SDL_RWops* make_rwops(const void* s, std::size_t n) {

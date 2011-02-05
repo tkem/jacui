@@ -1,7 +1,7 @@
 /**
  * JACUI - Just Another C++ User Interface Library
  *
- * Copyright (C) 2011 The JACUI Project
+ * Copyright (C) 2011 The JACUI Project <perlkoenig@gmail.com>
  *
  * http://code.google.com/p/jacui/
  *
@@ -26,49 +26,26 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_IMAGE_HPP
-#define JACUI_IMAGE_HPP
+#ifndef JACUI_CURSORS_HPP
+#define JACUI_CURSORS_HPP
 
-#include "surface.hpp"
+#include "cursor.hpp"
 
 namespace jacui {
-    /**
-       \brief JACUI image class
-    */
-    class image: public surface {
-    public:
-        image();
+    namespace cursors {
+        const cursor& arrow();
 
-        image(const image& rhs);
+        const cursor& crosshair();
 
-        explicit image(const char* filename);
+        const cursor& n_resize();
+        const cursor& s_resize();
+        const cursor& e_resize();
+        const cursor& w_resize();
 
-        image(const void* data, std::size_t size);
-
-        ~image();
-
-        void load(const char* filename);
-
-        void load(const void* data, std::size_t size);
-
-        void swap(image& rhs);
-
-        image& operator=(const image& rhs) {
-            image tmp(rhs);
-            swap(tmp);
-            return *this;
-        }
-
-    public:
-        detail::surface_type* detail() const;
-
-    private:
-        struct impl;
-        impl* pimpl_;
-    };
-
-    inline void swap(image& lhs, image& rhs) {
-        lhs.swap(rhs);
+        const cursor& ne_resize();
+        const cursor& nw_resize();
+        const cursor& se_resize();
+        const cursor& sw_resize();
     }
 }
 
