@@ -13,10 +13,6 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 lib_LTLIBRARIES = libjacui.la
 
-libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
-libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
-libjacui_la_LIBADD = $(SDL_LIBS)
-
 libjacui_la_SOURCES = \
 	src/sdl1.2/canvas.cpp \
 	src/sdl1.2/cursor.cpp \
@@ -31,8 +27,6 @@ libjacui_la_SOURCES = \
 	src/sdl1.2/types.cpp \
 	src/sdl1.2/window.cpp
 
-libjacui_includedir = $(includedir)/jacui
-
 libjacui_include_HEADERS = \
 	src/jacui/canvas.hpp \
 	src/jacui/cursor.hpp \
@@ -44,3 +38,25 @@ libjacui_include_HEADERS = \
 	src/jacui/surface.hpp \
 	src/jacui/types.hpp \
 	src/jacui/window.hpp
+
+libjacui_includedir = $(includedir)/jacui
+
+libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
+libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
+libjacui_la_LIBADD = $(SDL_LIBS)
+
+noinst_PROGRAMS = imgview fontview
+
+imgview_SOURCES = \
+	src/examples/imgview.cpp \
+	src/examples/bitstream_vera.hpp \
+	src/examples/bitstream_vera.cpp
+
+imgview_LDADD = libjacui.la $(SDL_LIBS)
+
+fontview_SOURCES = \
+	src/examples/fontview.cpp \
+	src/examples/bitstream_vera.hpp \
+	src/examples/bitstream_vera.cpp
+
+fontview_LDADD = libjacui.la $(SDL_LIBS)

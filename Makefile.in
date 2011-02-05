@@ -21,6 +21,7 @@
 # ACLOCAL_AMFLAGS = -I m4
 
 
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
@@ -40,6 +41,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
+noinst_PROGRAMS = imgview$(EXEEXT) fontview$(EXEEXT)
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(libjacui_include_HEADERS) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
@@ -95,6 +97,15 @@ libjacui_la_OBJECTS = $(am_libjacui_la_OBJECTS)
 libjacui_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(libjacui_la_LDFLAGS) $(LDFLAGS) -o $@
+PROGRAMS = $(noinst_PROGRAMS)
+am_fontview_OBJECTS = src/examples/fontview.$(OBJEXT) \
+	src/examples/bitstream_vera.$(OBJEXT)
+fontview_OBJECTS = $(am_fontview_OBJECTS)
+fontview_DEPENDENCIES = libjacui.la $(am__DEPENDENCIES_1)
+am_imgview_OBJECTS = src/examples/imgview.$(OBJEXT) \
+	src/examples/bitstream_vera.$(OBJEXT)
+imgview_OBJECTS = $(am_imgview_OBJECTS)
+imgview_DEPENDENCIES = libjacui.la $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -117,8 +128,10 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(libjacui_la_SOURCES)
-DIST_SOURCES = $(libjacui_la_SOURCES)
+SOURCES = $(libjacui_la_SOURCES) $(fontview_SOURCES) \
+	$(imgview_SOURCES)
+DIST_SOURCES = $(libjacui_la_SOURCES) $(fontview_SOURCES) \
+	$(imgview_SOURCES)
 HEADERS = $(libjacui_include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -260,9 +273,6 @@ AM_CPPFLAGS = -I$(top_srcdir)/src
 AM_CXXFLAGS = 
 AUTOMAKE_OPTIONS = subdir-objects
 lib_LTLIBRARIES = libjacui.la
-libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
-libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
-libjacui_la_LIBADD = $(SDL_LIBS)
 libjacui_la_SOURCES = \
 	src/sdl1.2/canvas.cpp \
 	src/sdl1.2/cursor.cpp \
@@ -277,7 +287,6 @@ libjacui_la_SOURCES = \
 	src/sdl1.2/types.cpp \
 	src/sdl1.2/window.cpp
 
-libjacui_includedir = $(includedir)/jacui
 libjacui_include_HEADERS = \
 	src/jacui/canvas.hpp \
 	src/jacui/cursor.hpp \
@@ -290,6 +299,22 @@ libjacui_include_HEADERS = \
 	src/jacui/types.hpp \
 	src/jacui/window.hpp
 
+libjacui_includedir = $(includedir)/jacui
+libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
+libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
+libjacui_la_LIBADD = $(SDL_LIBS)
+imgview_SOURCES = \
+	src/examples/imgview.cpp \
+	src/examples/bitstream_vera.hpp \
+	src/examples/bitstream_vera.cpp
+
+imgview_LDADD = libjacui.la $(SDL_LIBS)
+fontview_SOURCES = \
+	src/examples/fontview.cpp \
+	src/examples/bitstream_vera.hpp \
+	src/examples/bitstream_vera.cpp
+
+fontview_LDADD = libjacui.la $(SDL_LIBS)
 all: all-am
 
 .SUFFIXES:
@@ -390,8 +415,38 @@ src/sdl1.2/libjacui_la-window.lo: src/sdl1.2/$(am__dirstamp) \
 libjacui.la: $(libjacui_la_OBJECTS) $(libjacui_la_DEPENDENCIES) 
 	$(libjacui_la_LINK) -rpath $(libdir) $(libjacui_la_OBJECTS) $(libjacui_la_LIBADD) $(LIBS)
 
+clean-noinstPROGRAMS:
+	@list='$(noinst_PROGRAMS)'; test -n "$$list" || exit 0; \
+	echo " rm -f" $$list; \
+	rm -f $$list || exit $$?; \
+	test -n "$(EXEEXT)" || exit 0; \
+	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
+	echo " rm -f" $$list; \
+	rm -f $$list
+src/examples/$(am__dirstamp):
+	@$(MKDIR_P) src/examples
+	@: > src/examples/$(am__dirstamp)
+src/examples/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/examples/$(DEPDIR)
+	@: > src/examples/$(DEPDIR)/$(am__dirstamp)
+src/examples/fontview.$(OBJEXT): src/examples/$(am__dirstamp) \
+	src/examples/$(DEPDIR)/$(am__dirstamp)
+src/examples/bitstream_vera.$(OBJEXT): src/examples/$(am__dirstamp) \
+	src/examples/$(DEPDIR)/$(am__dirstamp)
+fontview$(EXEEXT): $(fontview_OBJECTS) $(fontview_DEPENDENCIES) 
+	@rm -f fontview$(EXEEXT)
+	$(CXXLINK) $(fontview_OBJECTS) $(fontview_LDADD) $(LIBS)
+src/examples/imgview.$(OBJEXT): src/examples/$(am__dirstamp) \
+	src/examples/$(DEPDIR)/$(am__dirstamp)
+imgview$(EXEEXT): $(imgview_OBJECTS) $(imgview_DEPENDENCIES) 
+	@rm -f imgview$(EXEEXT)
+	$(CXXLINK) $(imgview_OBJECTS) $(imgview_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f src/examples/bitstream_vera.$(OBJEXT)
+	-rm -f src/examples/fontview.$(OBJEXT)
+	-rm -f src/examples/imgview.$(OBJEXT)
 	-rm -f src/sdl1.2/libjacui_la-canvas.$(OBJEXT)
 	-rm -f src/sdl1.2/libjacui_la-canvas.lo
 	-rm -f src/sdl1.2/libjacui_la-cursor.$(OBJEXT)
@@ -418,6 +473,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@src/examples/$(DEPDIR)/bitstream_vera.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/examples/$(DEPDIR)/fontview.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/examples/$(DEPDIR)/imgview.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-canvas.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-cursor.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-cursors.Plo@am__quote@
@@ -762,7 +820,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-am
-all-am: Makefile $(LTLIBRARIES) $(HEADERS)
+all-am: Makefile $(LTLIBRARIES) $(PROGRAMS) $(HEADERS)
 installdirs:
 	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libjacui_includedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
@@ -788,6 +846,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f src/examples/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/examples/$(am__dirstamp)
 	-rm -f src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/sdl1.2/$(am__dirstamp)
 
@@ -797,11 +857,11 @@ maintainer-clean-generic:
 clean: clean-am
 
 clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
-	mostlyclean-am
+	clean-noinstPROGRAMS mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf src/sdl1.2/$(DEPDIR)
+	-rm -rf src/examples/$(DEPDIR) src/sdl1.2/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
@@ -849,7 +909,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf src/sdl1.2/$(DEPDIR)
+	-rm -rf src/examples/$(DEPDIR) src/sdl1.2/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -872,21 +932,22 @@ uninstall-am: uninstall-libLTLIBRARIES \
 .MAKE: install-am install-strip
 
 .PHONY: CTAGS GTAGS all all-am am--refresh check check-am clean \
-	clean-generic clean-libLTLIBRARIES clean-libtool ctags dist \
-	dist-all dist-bzip2 dist-gzip dist-lzma dist-shar dist-tarZ \
-	dist-xz dist-zip distcheck distclean distclean-compile \
-	distclean-generic distclean-libtool distclean-tags \
-	distcleancheck distdir distuninstallcheck dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-libLTLIBRARIES \
-	install-libjacui_includeHEADERS install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am uninstall-libLTLIBRARIES \
+	clean-generic clean-libLTLIBRARIES clean-libtool \
+	clean-noinstPROGRAMS ctags dist dist-all dist-bzip2 dist-gzip \
+	dist-lzma dist-shar dist-tarZ dist-xz dist-zip distcheck \
+	distclean distclean-compile distclean-generic \
+	distclean-libtool distclean-tags distcleancheck distdir \
+	distuninstallcheck dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am \
+	install-libLTLIBRARIES install-libjacui_includeHEADERS \
+	install-man install-pdf install-pdf-am install-ps \
+	install-ps-am install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
+	uninstall-am uninstall-libLTLIBRARIES \
 	uninstall-libjacui_includeHEADERS
 
 
