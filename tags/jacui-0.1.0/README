@@ -1,0 +1,4 @@
+JACUI is intended to be a simple, lightweight, cross-platform,
+"modern" C++ user interface library.  When it's finished, I
+mean.  Currently, it's just a simple C++ wrapper for the SDL (Simple
+Directmedia Layer) on Linux.
