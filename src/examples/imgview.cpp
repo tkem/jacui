@@ -263,7 +263,7 @@ std::string filename(const std::string& path)
 
 void update(window& win, const image& img, const font& f, const char* path)
 {
-    win.title(filename(path));
+    win.caption(filename(path));
     win.view().blit(img, win.size());
     draw(win.view(), f, path);
     win.update();
@@ -277,7 +277,7 @@ void update(window& win, const image& img, const font& f, const char* path, poin
     std::size_t x = p.x * imgsz.width / winsz.width;
     std::size_t y = p.y * imgsz.height / winsz.height;
 
-    win.title(filename(path));
+    win.caption(filename(path));
     if (win.width() > img.width() || win.height() > img.height()) {
         win.view().fill(make_rgb(0));
     }

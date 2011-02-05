@@ -51,10 +51,10 @@ namespace {
 
 namespace jacui {
     struct window::impl {
-        impl(const char* title, std::size_t width, std::size_t height, flags_type f) 
+        impl(const char* caption, std::size_t width, std::size_t height, flags_type f) 
         {
-            if (title)
-                SDL_WM_SetCaption(title, title);
+            if (caption)
+                SDL_WM_SetCaption(caption, caption);
             if (!SDL_SetVideoMode(width, height, 24, make_flags(f)))
                 detail::throw_error("error setting video mode");
         }
@@ -69,18 +69,18 @@ namespace jacui {
 
     const window::flags_type window::noframe = SDL_NOFRAME;
 
-    window::window(const std::string& title, flags_type f)
-        : pimpl_(new impl(title.c_str(), 0, 0, f))
+    window::window(const std::string& caption, flags_type f)
+        : pimpl_(new impl(caption.c_str(), 0, 0, f))
     {
     }
 
-    window::window(const std::string& title, size2d s, flags_type f)
-        : pimpl_(new impl(title.c_str(), s.width, s.height, f))
+    window::window(const std::string& caption, size2d s, flags_type f)
+        : pimpl_(new impl(caption.c_str(), s.width, s.height, f))
     {
     }
 
-    window::window(const std::string& title, std::size_t width, std::size_t height, flags_type f)
-        : pimpl_(new impl(title.c_str(), width, height, f))
+    window::window(const std::string& caption, std::size_t width, std::size_t height, flags_type f)
+        : pimpl_(new impl(caption.c_str(), width, height, f))
     {
     }
 
@@ -104,14 +104,14 @@ namespace jacui {
         return pimpl_->surface.height();
     }
 
-    std::string window::title() const
+    std::string window::caption() const
     {
-        char* caption;
-        SDL_WM_GetCaption(&caption, 0);
-        return std::string(caption ? caption : "");
+        char* s;
+        SDL_WM_GetCaption(&s, 0);
+        return std::string(s ? s : "");
     }
 
-    void window::title(const std::string& s)
+    void window::caption(const std::string& s)
     {
         SDL_WM_SetCaption(s.c_str(), s.c_str());
     }
