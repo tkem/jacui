@@ -92,7 +92,7 @@ namespace jacui {
 
         void update();
 
-        void quit();
+        void close();
 
     private:
         window(const window&);

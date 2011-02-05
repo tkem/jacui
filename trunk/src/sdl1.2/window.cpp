@@ -239,7 +239,7 @@ namespace jacui {
         SDL_Flip(SDL_GetVideoSurface());
     }
 
-    void window::quit()
+    void window::close()
     {
         pimpl_->events.quit();
     }
