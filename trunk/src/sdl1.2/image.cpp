@@ -48,29 +48,35 @@ namespace {
 }
 
 namespace jacui {
-    image::image() : detail_(0) 
+    struct image::impl: public detail::surface_type { 
+        static impl* make_impl(detail::surface_type* p) {
+            return static_cast<impl*>(p);
+        }
+    };
+
+    image::image() : pimpl_(0) 
     { 
     }
 
     image::image(const image& rhs)
-        : detail_(detail::copy_surface(rhs.detail_))
+        : pimpl_(impl::make_impl(detail::copy_surface(rhs.pimpl_)))
     {
     }
 
     image::image(const char* filename)
-        : detail_(load_image(filename))
+        : pimpl_(impl::make_impl(load_image(filename)))
     {
     }
 
     image::image(const void* data, std::size_t size)
-        : detail_(load_image(data, size))
+        : pimpl_(impl::make_impl(load_image(data, size)))
     {
     }
 
     image::~image()
     {
-        if (detail_) {
-            SDL_FreeSurface(detail_);
+        if (pimpl_) {
+            SDL_FreeSurface(pimpl_);
         }
     }
 
@@ -88,11 +94,11 @@ namespace jacui {
 
     void image::swap(image& rhs)
     {
-        std::swap(detail_, rhs.detail_);
+        std::swap(pimpl_, rhs.pimpl_);
     }
 
     detail::surface_type* image::detail() const
     {
-        return detail_;
+        return pimpl_;
     }
 }
