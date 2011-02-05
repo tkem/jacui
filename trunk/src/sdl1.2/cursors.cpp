@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#include "jacui/cursors.hpp"
-#include "jacui/error.hpp"
+#include "../jacui/cursors.hpp"
+#include "../jacui/error.hpp"
 
 #include <sstream>
 

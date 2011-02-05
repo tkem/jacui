@@ -26,4 +26,4 @@
  * SOFTWARE.
  */
 
-#include "jacui/error.hpp"
+#include "../jacui/error.hpp"

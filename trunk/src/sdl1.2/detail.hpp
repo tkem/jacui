@@ -29,9 +29,9 @@
 #ifndef JACUI_SDL_1_2_DETAIL_HPP
 #define JACUI_SDL_1_2_DETAIL_HPP
 
-#include "jacui/event.hpp"
-#include "jacui/error.hpp"
-#include "jacui/types.hpp"
+#include "../jacui/event.hpp"
+#include "../jacui/error.hpp"
+#include "../jacui/types.hpp"
 
 #include <SDL/SDL.h>
 

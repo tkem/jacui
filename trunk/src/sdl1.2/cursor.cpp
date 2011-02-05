@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#include "jacui/cursor.hpp"
-#include "jacui/error.hpp"
+#include "../jacui/cursor.hpp"
+#include "../jacui/error.hpp"
 #include "detail.hpp"
 
 namespace {

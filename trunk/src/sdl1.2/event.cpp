@@ -26,7 +26,7 @@
  * SOFTWARE.
  */
 
-#include "jacui/event.hpp"
+#include "../jacui/event.hpp"
 #include "detail.hpp"
 
 namespace jacui {
