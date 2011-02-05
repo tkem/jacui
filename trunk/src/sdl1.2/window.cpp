@@ -237,32 +237,27 @@ namespace jacui {
         pimpl_->events.set_timeout(ms);
     }
 
-    bool window::clear_timeout(timer_type timer)
-    {
-        return pimpl_->events.clear_timer(timer);
-    }
-
     window::timer_type window::set_interval(unsigned long ms)
     {
         return pimpl_->events.set_interval(ms);
     }
 
-    bool window::clear_interval(timer_type timer)
+    bool window::clear_timer(timer_type timer)
     {
         return pimpl_->events.clear_timer(timer);
     }
 
-    void window::push(event* pe)
+    void window::push_event(event* pe)
     {
         pimpl_->events.push(pe);
     }
 
-    event* window::poll()
+    event* window::poll_event()
     {
         return pimpl_->active ? pimpl_->events.poll() : 0;
     }
 
-    event* window::wait()
+    event* window::wait_event()
     {
         return pimpl_->active ? pimpl_->events.wait() : 0;
     }

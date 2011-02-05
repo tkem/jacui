@@ -374,7 +374,7 @@ int main(int argc, char* argv[])
     test_event tevent;
 
     std::cerr << "starting event loop...\n";
-    while (event* pe = win.wait()) {
+    while (event* pe = win.wait_event()) {
         if (verbose)
             output(std::cerr, win, *pe);
 
@@ -410,7 +410,7 @@ int main(int argc, char* argv[])
             if (timer) {
                 if (verbose)
                     std::cerr << "clearing timer " << timer << "...\n";
-                if (!win.clear_interval(timer))
+                if (!win.clear_timer(timer))
                     std::cerr << "clearing timer " << timer << " failed\n";
                 timer = 0;
             } 

@@ -90,17 +90,15 @@ namespace jacui {
 
         timer_type set_timeout(unsigned long ms);
 
-        bool clear_timeout(timer_type timer);
-
         timer_type set_interval(unsigned long ms);
 
-        bool clear_interval(timer_type timer);
+        bool clear_timer(timer_type timer);
 
-        void push(event* pe);
+        void push_event(event* pe);
 
-        event* poll();
+        event* poll_event();
 
-        event* wait();
+        event* wait_event();
 
         void quit();
 
