@@ -29,7 +29,7 @@
 #include "jacui/font.hpp"
 #include "detail.hpp"
 
-#include <SDL/SDL_ttf.h>
+#include <SDL_ttf.h>
 
 #include <algorithm>
 #include <fstream>

@@ -31,7 +31,7 @@
 
 #include <algorithm>
 
-#include <SDL/SDL_image.h>
+#include <SDL_image.h>
 
 namespace {
     jacui::detail::surface_type* load_image(const char* filename)
