@@ -32,10 +32,6 @@
 #include "types.h"
 
 namespace jacui {
-    namespace detail {
-        struct timer_type;
-    }
-
     /**
        \brief Generic JACUI event class
     */
@@ -163,6 +159,27 @@ namespace jacui {
     class user_event: public virtual event {
     public:
         event_type type() const { return user; }
+    };
+
+
+    /**
+       \brief JACUI event queue base class
+    */
+    class event_queue {
+    public:
+        virtual ~event_queue();
+
+        virtual event* wait() = 0;
+
+        virtual event* poll() = 0;
+
+        virtual void push(event* e) = 0;
+
+        virtual timer_event::timer_type set_timeout(unsigned long ms) = 0;
+
+        virtual timer_event::timer_type set_interval(unsigned long ms) = 0;
+
+        virtual bool clear_timer(timer_event::timer_type timer) = 0;
     };
 }
 
