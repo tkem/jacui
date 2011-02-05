@@ -26,9 +26,9 @@
  * SOFTWARE.
  */
 
-#include "jacui/surface.h"
-#include "detail.h"
-#include "jacui/error.h"
+#include "jacui/surface.hpp"
+#include "jacui/error.hpp"
+#include "detail.hpp"
 
 #include <cassert>
 

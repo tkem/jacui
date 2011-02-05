@@ -26,35 +26,24 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_WINDOW_H
-#define JACUI_WINDOW_H
+#ifndef JACUI_SURFACE_HPP
+#define JACUI_SURFACE_HPP
 
-#include "surface.h"
-#include "event.h"
-
-#include <string>
+#include "types.hpp"
 
 namespace jacui {
+    namespace detail {
+        struct surface_type;
+    }
+
     /**
-       \brief JACUI window class
+       \brief JACUI surface class
     */
-    class window {
+    class surface {
     public:
-        typedef unsigned int flags_type;
-        static const flags_type fullscreen;
-        static const flags_type noresize;
-        static const flags_type noframe;
+        virtual ~surface();
 
-        typedef timer_event::timer_type timer_type;
-
-    public:
-        explicit window(const std::string& title, flags_type f = 0);
-
-        window(const std::string& title, size2d size, flags_type f = 0);
-
-        window(const std::string& title, std::size_t width, std::size_t height, flags_type f = 0);
-
-        ~window();
+        bool empty() const;
 
         size2d size() const;
 
@@ -62,35 +51,40 @@ namespace jacui {
 
         std::size_t height() const;
 
-        std::string title() const;
+        rect2d clip() const;
 
-        void title(const std::string& s);
+        rect2d clip(rect2d r);
 
-        surface& view();
+        void fill(color c) {
+            fill(c, size());
+        }
 
-        const surface& view() const;
+        void fill(color c, rect2d r);
 
-        event_queue& events();
+        void blit(const surface& s) {
+            blit(s, s.size(), 0, 0);
+        }
 
-        const event_queue& events() const;
+        void blit(const surface& s, rect2d dst) {
+            blit(s, s.size(), dst);
+        }
 
-        void cursor(bool enable);
+        void blit(const surface& s, point2d dst) {
+            blit(s, s.size(), dst);
+        }
 
-        void resize(size2d size);
+        void blit(const surface& s, int x, int y) {
+            blit(s, s.size(), x, y);
+        }
 
-        void resize(std::size_t width, std::size_t height);
+        void blit(const surface& s, rect2d src, rect2d dst);
 
-        void update();
+        void blit(const surface& s, rect2d src, point2d dst);
 
-        void close();
+        void blit(const surface& s, rect2d src, int x, int y);
 
-    private:
-        window(const window&);
-        window& operator=(const window&);
-
-    private:
-        struct impl;
-        impl* pimpl_;
+    protected:
+        virtual detail::surface_type* detail() const = 0;
     };
 }
 

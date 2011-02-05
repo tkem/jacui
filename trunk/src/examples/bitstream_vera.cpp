@@ -48,7 +48,7 @@
  * contact: <fonts@gnome.org>.  
  */
 
-#include "bitstream_vera.h"
+#include "bitstream_vera.hpp"
 
 unsigned char bitstream_vera_ttf[65932] = {
   0x00, 0x01, 0x00, 0x00, 0x00, 0x11, 0x01, 0x00, 0x00, 0x04, 0x00, 0x10,

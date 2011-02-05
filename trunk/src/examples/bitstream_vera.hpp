@@ -48,8 +48,8 @@
  * contact: <fonts@gnome.org>.  
  */
 
-#ifndef BITSTREAM_VERA_H
-#define BITSTREAM_VERA_H
+#ifndef BITSTREAM_VERA_HPP
+#define BITSTREAM_VERA_HPP
 
 extern unsigned char bitstream_vera_ttf[65932];
 

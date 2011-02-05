@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#include "jacui/canvas.h"
-#include "detail.h"
+#include "jacui/canvas.hpp"
+#include "detail.hpp"
 
 namespace {
     jacui::detail::surface_type* make_surface(std::size_t width, std::size_t height)

@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_ERROR_H
-#define JACUI_ERROR_H
+#ifndef JACUI_ERROR_HPP
+#define JACUI_ERROR_HPP
 
 #include <stdexcept>
 

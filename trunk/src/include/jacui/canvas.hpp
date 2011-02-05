@@ -26,75 +26,47 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_FONT_H
-#define JACUI_FONT_H
+#ifndef JACUI_CANVAS_HPP
+#define JACUI_CANVAS_HPP
 
-#include "canvas.h"
-
-#include <string>
+#include "surface.hpp"
 
 namespace jacui {
     /**
-       \brief JACUI font class
+       \brief JACUI canvas class
     */
-    class font {
+    class canvas: public surface {
     public:
-        font(const font& rhs);
+        canvas();
 
-        font(const font& rhs, float ptsize);
+        canvas(const canvas& rhs);
 
-        font(const char* filename, float ptsize);
+        explicit canvas(size2d size);
 
-        font(const void* data, std::size_t size, float ptsize);
-        
-        ~font();
+        canvas(std::size_t width, std::size_t height);
 
-        float size() const;
+        ~canvas();
 
-        const char* family() const;
+        void resize(size2d size);
 
-        const char* style() const;
+        void resize(std::size_t width, std::size_t height);
 
-        int height() const;
+        void swap(canvas& rhs);
 
-        int ascent() const;
-
-        int descent() const;
-
-        int leading() const;
-
-        size2d size(const std::string& text) const;
-
-        size2d size(const std::wstring& text) const;
-
-        canvas render(const std::string& text, color fg, color bg) const;
-
-        canvas render(const std::wstring& text, color fg, color bg) const;
-
-        void draw(surface& s, const std::string& text, color c, point2d p) const;
-
-        void draw(surface& s, const std::wstring& text, color c, point2d p) const;
-
-        void draw(surface& s, const std::string& text, color c, int x, int y) const;
-
-        void draw(surface& s, const std::wstring& text, color c, int x, int y) const;
-
-        void resize(float ptsize);
-
-        void swap(font& rhs);
-
-        font& operator=(const font& rhs) {
-            font tmp(rhs);
+        canvas& operator=(const canvas& rhs) {
+            canvas tmp(rhs);
             swap(tmp);
             return *this;
         }
 
+    protected:
+        detail::surface_type* detail() const;
+
     private:
-        struct impl;
-        impl* pimpl_;
+        detail::surface_type* detail_;
     };
 
-    inline void swap(font& lhs, font& rhs) {
+    inline void swap(canvas& lhs, canvas& rhs) {
         lhs.swap(rhs);
     }
 }

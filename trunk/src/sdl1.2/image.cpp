@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#include "jacui/image.h"
-#include "detail.h"
+#include "jacui/image.hpp"
+#include "detail.hpp"
 
 #include <algorithm>
 

@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_TYPES_H
-#define JACUI_TYPES_H
+#ifndef JACUI_TYPES_HPP
+#define JACUI_TYPES_HPP
 
 #include <cstddef>
 
