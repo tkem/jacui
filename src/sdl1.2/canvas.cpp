@@ -26,7 +26,7 @@
  * SOFTWARE.
  */
 
-#include "jacui/canvas.hpp"
+#include "../jacui/canvas.hpp"
 #include "detail.hpp"
 
 namespace {

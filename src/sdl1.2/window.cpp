@@ -26,7 +26,7 @@
  * SOFTWARE.
  */
 
-#include "jacui/window.hpp"
+#include "../jacui/window.hpp"
 #include "detail.hpp"
 
 namespace {
