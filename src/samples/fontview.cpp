@@ -27,12 +27,10 @@
  */
 
 #include "bitstream_vera.h"
-#include "sdl_icons.h"
 
 #include "jacui/window.h"
 #include "jacui/event.h"
 #include "jacui/font.h"
-#include "jacui/colors.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -135,9 +133,9 @@ int main(int argc, char* argv[])
         os << "SDL Font View";
     }
 
-    window win(os.str(), xpmicon(sdl_powered_32_xpm), size);
-    color bg = unicode ? colors::silver : colors::white;
-    color fg = colors::black;
+    window win(os.str(), size);
+    color bg = make_rgb(0xff);
+    color fg = make_rgb(0x00);
 
     canvas c = unicode ? f.render(wtext, fg, bg) : f.render(text, fg, bg);
 

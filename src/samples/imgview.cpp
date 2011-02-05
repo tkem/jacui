@@ -27,13 +27,11 @@
  */
 
 #include "bitstream_vera.h"
-#include "sdl_icons.h"
 
 #include "jacui/window.h"
 #include "jacui/event.h"
 #include "jacui/image.h"
 #include "jacui/font.h"
-#include "jacui/colors.h"
 
 #include <algorithm>
 #include <iostream>
@@ -255,7 +253,7 @@ void draw(surface& s, const font& f, const char* text)
     int x = s.width() - txtsz.width - 8;
     int y = s.height() - 8;
 
-    f.draw(s, text, colors::black, x, y);
+    f.draw(s, text, make_rgb(0x00), x, y);
 }
 
 std::string filename(const std::string& path)
@@ -363,9 +361,7 @@ int main(int argc, char* argv[])
 
     image img(argv[index]);
     font fnt(bitstream_vera_ttf, sizeof bitstream_vera_ttf, 12);
-    xpmicon icon(sdl_powered_64_xpm);
-
-    window win(filename(argv[index]), icon, width, height, flags);
+    window win(filename(argv[index]), width, height, flags);
 
     update(win, img, fnt, argv[index]);
 
