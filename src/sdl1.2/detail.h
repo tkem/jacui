@@ -74,7 +74,7 @@ namespace jacui {
             SDL_Surface* surface_;
         };
 
-        class event_queue:
+        class event_queue: public jacui::event_queue,
             private resize_event, 
             private redraw_event, 
             private mouse_event, 
@@ -95,6 +95,8 @@ namespace jacui {
             timer_event::timer_type set_interval(unsigned long ms);
 
             bool clear_timer(timer_event::timer_type timer);
+
+            void quit();
 
         private:
             event_type type() const;
