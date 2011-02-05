@@ -33,7 +33,7 @@
 #include "jacui/error.hpp"
 #include "jacui/types.hpp"
 
-#include <SDL/SDL.h>
+#include <SDL.h>
 
 #include <string>
 

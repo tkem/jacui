@@ -78,12 +78,19 @@ am__base_list = \
 am__installdirs = "$(DESTDIR)$(libdir)" \
 	"$(DESTDIR)$(libjacui_includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
-libjacui_la_LIBADD =
+am__DEPENDENCIES_1 =
+libjacui_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_libjacui_la_OBJECTS = src/sdl1.2/canvas.lo src/sdl1.2/cursor.lo \
-	src/sdl1.2/cursors.lo src/sdl1.2/detail.lo src/sdl1.2/error.lo \
-	src/sdl1.2/event.lo src/sdl1.2/font.lo src/sdl1.2/image.lo \
-	src/sdl1.2/surface.lo src/sdl1.2/types.lo src/sdl1.2/window.lo
+am_libjacui_la_OBJECTS = src/sdl1.2/libjacui_la-canvas.lo \
+	src/sdl1.2/libjacui_la-cursor.lo \
+	src/sdl1.2/libjacui_la-cursors.lo \
+	src/sdl1.2/libjacui_la-detail.lo \
+	src/sdl1.2/libjacui_la-error.lo \
+	src/sdl1.2/libjacui_la-event.lo src/sdl1.2/libjacui_la-font.lo \
+	src/sdl1.2/libjacui_la-image.lo \
+	src/sdl1.2/libjacui_la-surface.lo \
+	src/sdl1.2/libjacui_la-types.lo \
+	src/sdl1.2/libjacui_la-window.lo
 libjacui_la_OBJECTS = $(am_libjacui_la_OBJECTS)
 libjacui_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -185,6 +192,8 @@ PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 RANLIB = @RANLIB@
+SDL_CFLAGS = @SDL_CFLAGS@
+SDL_LIBS = @SDL_LIBS@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -251,6 +260,9 @@ AM_CPPFLAGS = -I$(top_srcdir)/src
 AM_CXXFLAGS = 
 AUTOMAKE_OPTIONS = subdir-objects
 lib_LTLIBRARIES = libjacui.la
+libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
+libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
+libjacui_la_LIBADD = $(SDL_LIBS)
 libjacui_la_SOURCES = \
 	src/sdl1.2/canvas.cpp \
 	src/sdl1.2/cursor.cpp \
@@ -265,7 +277,6 @@ libjacui_la_SOURCES = \
 	src/sdl1.2/types.cpp \
 	src/sdl1.2/window.cpp
 
-libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
 libjacui_includedir = $(includedir)/jacui
 libjacui_include_HEADERS = \
 	src/jacui/canvas.hpp \
@@ -354,70 +365,70 @@ src/sdl1.2/$(am__dirstamp):
 src/sdl1.2/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/sdl1.2/$(DEPDIR)
 	@: > src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/canvas.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-canvas.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/cursor.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-cursor.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/cursors.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-cursors.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/detail.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-detail.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/error.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-error.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/event.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-event.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/font.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-font.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/image.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-image.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/surface.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-surface.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/types.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-types.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
-src/sdl1.2/window.lo: src/sdl1.2/$(am__dirstamp) \
+src/sdl1.2/libjacui_la-window.lo: src/sdl1.2/$(am__dirstamp) \
 	src/sdl1.2/$(DEPDIR)/$(am__dirstamp)
 libjacui.la: $(libjacui_la_OBJECTS) $(libjacui_la_DEPENDENCIES) 
 	$(libjacui_la_LINK) -rpath $(libdir) $(libjacui_la_OBJECTS) $(libjacui_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f src/sdl1.2/canvas.$(OBJEXT)
-	-rm -f src/sdl1.2/canvas.lo
-	-rm -f src/sdl1.2/cursor.$(OBJEXT)
-	-rm -f src/sdl1.2/cursor.lo
-	-rm -f src/sdl1.2/cursors.$(OBJEXT)
-	-rm -f src/sdl1.2/cursors.lo
-	-rm -f src/sdl1.2/detail.$(OBJEXT)
-	-rm -f src/sdl1.2/detail.lo
-	-rm -f src/sdl1.2/error.$(OBJEXT)
-	-rm -f src/sdl1.2/error.lo
-	-rm -f src/sdl1.2/event.$(OBJEXT)
-	-rm -f src/sdl1.2/event.lo
-	-rm -f src/sdl1.2/font.$(OBJEXT)
-	-rm -f src/sdl1.2/font.lo
-	-rm -f src/sdl1.2/image.$(OBJEXT)
-	-rm -f src/sdl1.2/image.lo
-	-rm -f src/sdl1.2/surface.$(OBJEXT)
-	-rm -f src/sdl1.2/surface.lo
-	-rm -f src/sdl1.2/types.$(OBJEXT)
-	-rm -f src/sdl1.2/types.lo
-	-rm -f src/sdl1.2/window.$(OBJEXT)
-	-rm -f src/sdl1.2/window.lo
+	-rm -f src/sdl1.2/libjacui_la-canvas.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-canvas.lo
+	-rm -f src/sdl1.2/libjacui_la-cursor.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-cursor.lo
+	-rm -f src/sdl1.2/libjacui_la-cursors.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-cursors.lo
+	-rm -f src/sdl1.2/libjacui_la-detail.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-detail.lo
+	-rm -f src/sdl1.2/libjacui_la-error.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-error.lo
+	-rm -f src/sdl1.2/libjacui_la-event.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-event.lo
+	-rm -f src/sdl1.2/libjacui_la-font.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-font.lo
+	-rm -f src/sdl1.2/libjacui_la-image.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-image.lo
+	-rm -f src/sdl1.2/libjacui_la-surface.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-surface.lo
+	-rm -f src/sdl1.2/libjacui_la-types.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-types.lo
+	-rm -f src/sdl1.2/libjacui_la-window.$(OBJEXT)
+	-rm -f src/sdl1.2/libjacui_la-window.lo
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/canvas.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/cursor.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/cursors.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/detail.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/error.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/event.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/font.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/image.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/surface.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/types.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/window.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-canvas.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-cursor.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-cursors.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-detail.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-error.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-event.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-font.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-image.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-surface.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-types.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/sdl1.2/$(DEPDIR)/libjacui_la-window.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -442,6 +453,83 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
+
+src/sdl1.2/libjacui_la-canvas.lo: src/sdl1.2/canvas.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-canvas.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-canvas.Tpo -c -o src/sdl1.2/libjacui_la-canvas.lo `test -f 'src/sdl1.2/canvas.cpp' || echo '$(srcdir)/'`src/sdl1.2/canvas.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-canvas.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-canvas.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/canvas.cpp' object='src/sdl1.2/libjacui_la-canvas.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-canvas.lo `test -f 'src/sdl1.2/canvas.cpp' || echo '$(srcdir)/'`src/sdl1.2/canvas.cpp
+
+src/sdl1.2/libjacui_la-cursor.lo: src/sdl1.2/cursor.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-cursor.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-cursor.Tpo -c -o src/sdl1.2/libjacui_la-cursor.lo `test -f 'src/sdl1.2/cursor.cpp' || echo '$(srcdir)/'`src/sdl1.2/cursor.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-cursor.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-cursor.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/cursor.cpp' object='src/sdl1.2/libjacui_la-cursor.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-cursor.lo `test -f 'src/sdl1.2/cursor.cpp' || echo '$(srcdir)/'`src/sdl1.2/cursor.cpp
+
+src/sdl1.2/libjacui_la-cursors.lo: src/sdl1.2/cursors.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-cursors.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-cursors.Tpo -c -o src/sdl1.2/libjacui_la-cursors.lo `test -f 'src/sdl1.2/cursors.cpp' || echo '$(srcdir)/'`src/sdl1.2/cursors.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-cursors.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-cursors.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/cursors.cpp' object='src/sdl1.2/libjacui_la-cursors.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-cursors.lo `test -f 'src/sdl1.2/cursors.cpp' || echo '$(srcdir)/'`src/sdl1.2/cursors.cpp
+
+src/sdl1.2/libjacui_la-detail.lo: src/sdl1.2/detail.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-detail.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-detail.Tpo -c -o src/sdl1.2/libjacui_la-detail.lo `test -f 'src/sdl1.2/detail.cpp' || echo '$(srcdir)/'`src/sdl1.2/detail.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-detail.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-detail.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/detail.cpp' object='src/sdl1.2/libjacui_la-detail.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-detail.lo `test -f 'src/sdl1.2/detail.cpp' || echo '$(srcdir)/'`src/sdl1.2/detail.cpp
+
+src/sdl1.2/libjacui_la-error.lo: src/sdl1.2/error.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-error.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-error.Tpo -c -o src/sdl1.2/libjacui_la-error.lo `test -f 'src/sdl1.2/error.cpp' || echo '$(srcdir)/'`src/sdl1.2/error.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-error.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-error.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/error.cpp' object='src/sdl1.2/libjacui_la-error.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-error.lo `test -f 'src/sdl1.2/error.cpp' || echo '$(srcdir)/'`src/sdl1.2/error.cpp
+
+src/sdl1.2/libjacui_la-event.lo: src/sdl1.2/event.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-event.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-event.Tpo -c -o src/sdl1.2/libjacui_la-event.lo `test -f 'src/sdl1.2/event.cpp' || echo '$(srcdir)/'`src/sdl1.2/event.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-event.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-event.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/event.cpp' object='src/sdl1.2/libjacui_la-event.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-event.lo `test -f 'src/sdl1.2/event.cpp' || echo '$(srcdir)/'`src/sdl1.2/event.cpp
+
+src/sdl1.2/libjacui_la-font.lo: src/sdl1.2/font.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-font.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-font.Tpo -c -o src/sdl1.2/libjacui_la-font.lo `test -f 'src/sdl1.2/font.cpp' || echo '$(srcdir)/'`src/sdl1.2/font.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-font.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-font.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/font.cpp' object='src/sdl1.2/libjacui_la-font.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-font.lo `test -f 'src/sdl1.2/font.cpp' || echo '$(srcdir)/'`src/sdl1.2/font.cpp
+
+src/sdl1.2/libjacui_la-image.lo: src/sdl1.2/image.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-image.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-image.Tpo -c -o src/sdl1.2/libjacui_la-image.lo `test -f 'src/sdl1.2/image.cpp' || echo '$(srcdir)/'`src/sdl1.2/image.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-image.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-image.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/image.cpp' object='src/sdl1.2/libjacui_la-image.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-image.lo `test -f 'src/sdl1.2/image.cpp' || echo '$(srcdir)/'`src/sdl1.2/image.cpp
+
+src/sdl1.2/libjacui_la-surface.lo: src/sdl1.2/surface.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-surface.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-surface.Tpo -c -o src/sdl1.2/libjacui_la-surface.lo `test -f 'src/sdl1.2/surface.cpp' || echo '$(srcdir)/'`src/sdl1.2/surface.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-surface.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-surface.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/surface.cpp' object='src/sdl1.2/libjacui_la-surface.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-surface.lo `test -f 'src/sdl1.2/surface.cpp' || echo '$(srcdir)/'`src/sdl1.2/surface.cpp
+
+src/sdl1.2/libjacui_la-types.lo: src/sdl1.2/types.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-types.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-types.Tpo -c -o src/sdl1.2/libjacui_la-types.lo `test -f 'src/sdl1.2/types.cpp' || echo '$(srcdir)/'`src/sdl1.2/types.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-types.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-types.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/types.cpp' object='src/sdl1.2/libjacui_la-types.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-types.lo `test -f 'src/sdl1.2/types.cpp' || echo '$(srcdir)/'`src/sdl1.2/types.cpp
+
+src/sdl1.2/libjacui_la-window.lo: src/sdl1.2/window.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/sdl1.2/libjacui_la-window.lo -MD -MP -MF src/sdl1.2/$(DEPDIR)/libjacui_la-window.Tpo -c -o src/sdl1.2/libjacui_la-window.lo `test -f 'src/sdl1.2/window.cpp' || echo '$(srcdir)/'`src/sdl1.2/window.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/sdl1.2/$(DEPDIR)/libjacui_la-window.Tpo src/sdl1.2/$(DEPDIR)/libjacui_la-window.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/sdl1.2/window.cpp' object='src/sdl1.2/libjacui_la-window.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjacui_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/sdl1.2/libjacui_la-window.lo `test -f 'src/sdl1.2/window.cpp' || echo '$(srcdir)/'`src/sdl1.2/window.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo

@@ -13,6 +13,10 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 lib_LTLIBRARIES = libjacui.la
 
+libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
+libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
+libjacui_la_LIBADD = $(SDL_LIBS)
+
 libjacui_la_SOURCES = \
 	src/sdl1.2/canvas.cpp \
 	src/sdl1.2/cursor.cpp \
@@ -26,8 +30,6 @@ libjacui_la_SOURCES = \
 	src/sdl1.2/surface.cpp \
 	src/sdl1.2/types.cpp \
 	src/sdl1.2/window.cpp
-
-libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
 
 libjacui_includedir = $(includedir)/jacui
 
