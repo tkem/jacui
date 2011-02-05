@@ -132,8 +132,8 @@ int main(int argc, char* argv[])
     }
 
     window win(os.str(), size);
-    color bg = make_rgb(0xff);
-    color fg = make_rgb(0x00);
+    color bg = make_rgb(0xffffff);
+    color fg = make_rgb(0x000000);
 
     canvas c = unicode ? f.render(wtext, fg, bg) : f.render(text, fg, bg);
 

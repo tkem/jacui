@@ -63,7 +63,8 @@ namespace jacui {
         detail::surface_type* detail() const;
 
     private:
-        detail::surface_type* detail_;
+        struct impl;
+        impl* pimpl_;
     };
 
     inline void swap(canvas& lhs, canvas& rhs) {

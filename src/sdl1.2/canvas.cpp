@@ -39,29 +39,35 @@ namespace {
 }
 
 namespace jacui {
-    canvas::canvas() : detail_(0) 
+    struct canvas::impl: public detail::surface_type { 
+        static impl* make_impl(detail::surface_type* p) {
+            return static_cast<impl*>(p);
+        }
+    };
+
+    canvas::canvas() : pimpl_(0) 
     { 
     }
 
     canvas::canvas(const canvas& rhs) 
-        : detail_(detail::copy_surface(rhs.detail_))
+        : pimpl_(impl::make_impl(detail::copy_surface(rhs.pimpl_)))
     {
     }
 
     canvas::canvas(size2d size) 
-        : detail_(make_surface(size.width, size.height))
+        : pimpl_(impl::make_impl(make_surface(size.width, size.height)))
     {
     }
 
     canvas::canvas(std::size_t width, std::size_t height) 
-        : detail_(make_surface(width, height))
+        : pimpl_(impl::make_impl(make_surface(width, height)))
     {
     }
 
     canvas::~canvas()
     {
-        if (detail_) {
-            SDL_FreeSurface(detail_);
+        if (pimpl_) {
+            SDL_FreeSurface(pimpl_);
         }
     }
 
@@ -81,11 +87,11 @@ namespace jacui {
 
     void canvas::swap(canvas& rhs)
     {
-        std::swap(detail_, rhs.detail_);
+        std::swap(pimpl_, rhs.pimpl_);
     }
 
     detail::surface_type* canvas::detail() const
     {
-        return detail_;
+        return pimpl_;
     }
 }
