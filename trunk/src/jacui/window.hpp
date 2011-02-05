@@ -49,11 +49,11 @@ namespace jacui {
         typedef timer_event::timer_type timer_type;
 
     public:
-        explicit window(const std::string& title, flags_type f = 0);
+        explicit window(const std::string& caption, flags_type f = 0);
 
-        window(const std::string& title, size2d size, flags_type f = 0);
+        window(const std::string& caption, size2d size, flags_type f = 0);
 
-        window(const std::string& title, std::size_t width, std::size_t height, flags_type f = 0);
+        window(const std::string& caption, std::size_t width, std::size_t height, flags_type f = 0);
 
         ~window();
 
@@ -63,9 +63,9 @@ namespace jacui {
 
         std::size_t height() const;
 
-        std::string title() const;
+        std::string caption() const;
 
-        void title(const std::string& s);
+        void caption(const std::string& s);
 
         surface& view();
 

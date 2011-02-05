@@ -4,16 +4,16 @@
 # ACLOCAL_AMFLAGS = -I m4
 
 # This is so we can #include <jacui/foo.hpp>
-AM_CPPFLAGS = -I$(top_srcdir)/src
+AM_CPPFLAGS = -I$(top_srcdir)/src/
 
 # This is mostly based on configure options
 AM_CXXFLAGS =
 
 AUTOMAKE_OPTIONS = subdir-objects
 
-lib_LTLIBRARIES = libjacui.la
+lib_LTLIBRARIES = libjacui-sdl1.2.la
 
-libjacui_la_SOURCES = \
+libjacui_sdl1_2_la_SOURCES = \
 	src/sdl1.2/canvas.cpp \
 	src/sdl1.2/cursor.cpp \
 	src/sdl1.2/cursors.cpp \
@@ -27,7 +27,7 @@ libjacui_la_SOURCES = \
 	src/sdl1.2/types.cpp \
 	src/sdl1.2/window.cpp
 
-libjacui_include_HEADERS = \
+libjacui_sdl1_2_include_HEADERS = \
 	src/jacui/canvas.hpp \
 	src/jacui/cursor.hpp \
 	src/jacui/cursors.hpp \
@@ -39,11 +39,11 @@ libjacui_include_HEADERS = \
 	src/jacui/types.hpp \
 	src/jacui/window.hpp
 
-libjacui_includedir = $(includedir)/jacui
+libjacui_sdl1_2_includedir = $(includedir)/jacui
 
-libjacui_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
-libjacui_la_CPPFLAGS = $(SDL_CFLAGS)
-libjacui_la_LIBADD = $(SDL_LIBS)
+libjacui_sdl1_2_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
+libjacui_sdl1_2_la_CPPFLAGS = -I$(top_srcdir)/src $(SDL_CFLAGS)
+libjacui_sdl1_2_la_LIBADD = $(SDL_LIBS)
 
 noinst_PROGRAMS = imgview fontview
 
@@ -52,14 +52,14 @@ imgview_SOURCES = \
 	src/examples/bitstream_vera.hpp \
 	src/examples/bitstream_vera.cpp
 
-imgview_LDADD = libjacui.la $(SDL_LIBS)
+imgview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 
 fontview_SOURCES = \
 	src/examples/fontview.cpp \
 	src/examples/bitstream_vera.hpp \
 	src/examples/bitstream_vera.cpp
 
-fontview_LDADD = libjacui.la $(SDL_LIBS)
+fontview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 
 doxygen:
 	doxygen
