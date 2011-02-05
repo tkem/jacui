@@ -154,7 +154,7 @@ int main(int argc, char* argv[])
     
     win.update();
 
-    while (event* pe = win.wait_event()) {
+    while (event* pe = win.events().wait()) {
         switch (pe->type()) {
         case event::redraw:
             if (use_canvas) {

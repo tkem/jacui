@@ -82,7 +82,6 @@ namespace jacui {
         typedef cursor_map::iterator cursor_iterator;
 
         impl(const char* title, std::size_t width, std::size_t height, flags_type f) 
-            : active(true) 
         {
             if (title)
                 SDL_WM_SetCaption(title, title);
@@ -91,7 +90,6 @@ namespace jacui {
         }
 
         impl(const char* title, const wmicon& icon, std::size_t width, std::size_t height, flags_type f) 
-            : active(true) 
         {
             if (title)
                 SDL_WM_SetCaption(title, title);
@@ -109,10 +107,9 @@ namespace jacui {
             SDL_FreeCursor(v.second);
         }
 
-        event_queue events;
+        detail::event_queue events;
         cursor_map cursors;
         wmsurface surface;
-        bool active;
     };
 
     const window::flags_type window::fullscreen = SDL_FULLSCREEN;
@@ -196,6 +193,16 @@ namespace jacui {
         return pimpl_->surface;
     }
 
+    event_queue& window::events()
+    {
+        return pimpl_->events;
+    }
+
+    const event_queue& window::events() const
+    {
+        return pimpl_->events;
+    }
+
     void window::cursor(const jacui::cursor& c)
     {
         impl::cursor_iterator i = pimpl_->cursors.find(c.data());
@@ -232,39 +239,9 @@ namespace jacui {
         SDL_Flip(SDL_GetVideoSurface());
     }
 
-    window::timer_type window::set_timeout(unsigned long ms)
-    {
-        pimpl_->events.set_timeout(ms);
-    }
-
-    window::timer_type window::set_interval(unsigned long ms)
-    {
-        return pimpl_->events.set_interval(ms);
-    }
-
-    bool window::clear_timer(timer_type timer)
-    {
-        return pimpl_->events.clear_timer(timer);
-    }
-
-    void window::push_event(event* pe)
-    {
-        pimpl_->events.push(pe);
-    }
-
-    event* window::poll_event()
-    {
-        return pimpl_->active ? pimpl_->events.poll() : 0;
-    }
-
-    event* window::wait_event()
-    {
-        return pimpl_->active ? pimpl_->events.wait() : 0;
-    }
-
     void window::quit()
     {
-        pimpl_->active = false;
+        pimpl_->events.quit();
     }
 
 }

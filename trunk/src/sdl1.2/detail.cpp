@@ -149,6 +149,11 @@ namespace jacui {
             return true;
         }
 
+        void event_queue::quit()
+        {
+            event_.type = SDL_QUIT;
+        }
+
         event::event_type event_queue::type() const 
         {
             switch (event_.type) {

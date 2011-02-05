@@ -73,10 +73,14 @@ namespace jacui {
         std::string title() const;
 
         std::string title(const std::string& s);
-        
+
         surface& view();
 
         const surface& view() const;
+
+        event_queue& events();
+
+        const event_queue& events() const;
 
         void cursor(bool enable);
 
@@ -87,18 +91,6 @@ namespace jacui {
         void resize(std::size_t width, std::size_t height);
 
         void update();
-
-        timer_type set_timeout(unsigned long ms);
-
-        timer_type set_interval(unsigned long ms);
-
-        bool clear_timer(timer_type timer);
-
-        void push_event(event* pe);
-
-        event* poll_event();
-
-        event* wait_event();
 
         void quit();
 

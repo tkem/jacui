@@ -369,12 +369,12 @@ int main(int argc, char* argv[])
 
     update(win, img, fnt, argv[index]);
 
-    window::timer_type timer = interval ? win.set_interval(interval) : 0;
+    window::timer_type timer = interval ? win.events().set_interval(interval) : 0;
 
     test_event tevent;
 
     std::cerr << "starting event loop...\n";
-    while (event* pe = win.wait_event()) {
+    while (event* pe = win.events().wait()) {
         if (verbose)
             output(std::cerr, win, *pe);
 
@@ -410,7 +410,7 @@ int main(int argc, char* argv[])
             if (timer) {
                 if (verbose)
                     std::cerr << "clearing timer " << timer << "...\n";
-                if (!win.clear_timer(timer))
+                if (!win.events().clear_timer(timer))
                     std::cerr << "clearing timer " << timer << " failed\n";
                 timer = 0;
             } 

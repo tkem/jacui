@@ -34,6 +34,10 @@ namespace jacui {
     {
     }
 
+    event_queue::~event_queue()
+    {
+    }
+
     const input_event::modmask_type input_event::shift_mask = KMOD_SHIFT;
     const input_event::modmask_type input_event::ctrl_mask = KMOD_CTRL;
     const input_event::modmask_type input_event::alt_mask = KMOD_ALT;
