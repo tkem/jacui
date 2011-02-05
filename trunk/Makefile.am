@@ -18,6 +18,7 @@ libjacui_la_SOURCES = \
 	src/sdl1.2/cursor.cpp \
 	src/sdl1.2/cursors.cpp \
 	src/sdl1.2/detail.cpp \
+	src/sdl1.2/detail.hpp \
 	src/sdl1.2/error.cpp \
 	src/sdl1.2/event.cpp \
 	src/sdl1.2/font.cpp \
