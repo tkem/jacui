@@ -60,3 +60,8 @@ fontview_SOURCES = \
 	src/examples/bitstream_vera.cpp
 
 fontview_LDADD = libjacui.la $(SDL_LIBS)
+
+doxygen:
+	doxygen
+
+EXTRA_DIST = Doxyfile

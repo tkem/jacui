@@ -315,6 +315,7 @@ fontview_SOURCES = \
 	src/examples/bitstream_vera.cpp
 
 fontview_LDADD = libjacui.la $(SDL_LIBS)
+EXTRA_DIST = Doxyfile
 all: all-am
 
 .SUFFIXES:
@@ -950,6 +951,9 @@ uninstall-am: uninstall-libLTLIBRARIES \
 	uninstall-am uninstall-libLTLIBRARIES \
 	uninstall-libjacui_includeHEADERS
 
+
+doxygen:
+	doxygen
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
