@@ -186,12 +186,12 @@ namespace jacui {
         return std::string(caption ? caption : "");
     }
 
-    jacui::surface& window::surface()
+    surface& window::view()
     {
         return pimpl_->surface;
     }
 
-    const jacui::surface& window::surface() const
+    const surface& window::view() const
     {
         return pimpl_->surface;
     }

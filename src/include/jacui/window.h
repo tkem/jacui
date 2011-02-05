@@ -26,8 +26,8 @@
  * SOFTWARE.
  */
 
-#ifndef JACUI_SCREEN_H
-#define JACUI_SCREEN_H
+#ifndef JACUI_WINDOW_H
+#define JACUI_WINDOW_H
 
 #include "surface.h"
 #include "event.h"
@@ -74,9 +74,9 @@ namespace jacui {
 
         std::string title(const std::string& s);
         
-        jacui::surface& surface();
+        surface& view();
 
-        const jacui::surface& surface() const;
+        const surface& view() const;
 
         void cursor(bool enable);
 
