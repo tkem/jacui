@@ -288,7 +288,7 @@ namespace {
         for (std::size_t row = 0; row != height; ++row) {
             for (std::size_t col = 0; col != width; ++col) {
                 std::size_t index = row * pitch + col / 8;
-                std::size_t value = 1 << 7 - (col % 8);
+                std::size_t value = 1 << (7 - col % 8);
 
                 switch (xpm[row + 4][col]) {
                 case 'X':
