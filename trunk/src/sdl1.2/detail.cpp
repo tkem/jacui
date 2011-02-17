@@ -31,6 +31,7 @@
 #include <SDL_ttf.h>
 
 #include <algorithm>
+#include <cctype>
 
 namespace {
     enum { uc_user, uc_timeout, uc_interval };

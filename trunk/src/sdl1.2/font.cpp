@@ -109,7 +109,7 @@ namespace jacui {
         }
     
         void resize(float ptsize) {
-            TTF_Font* f = TTF_OpenFontRW(make_rwops(buffer), 1, ptsize);
+            TTF_Font* f = TTF_OpenFontRW(make_rwops(buffer), 1, int(ptsize));
             if (!f)
                 throw_error("error creating font");
             if (font)
@@ -120,7 +120,7 @@ namespace jacui {
 
         buffer_type buffer;
         TTF_Font* font;
-        int size;
+        float size;
     };
 
     font::font(const font& rhs)
