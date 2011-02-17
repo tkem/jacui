@@ -80,11 +80,11 @@ namespace jacui {
 
         virtual modmask_type modifiers() const = 0;
 
-        bool shift() const { return modifiers() & shift_mask; }
+        bool shift() const { return (modifiers() & shift_mask) != 0; }
 
-        bool ctrl() const { return modifiers() & ctrl_mask; }
+        bool ctrl() const { return (modifiers() & ctrl_mask) != 0; }
 
-        bool alt() const { return modifiers() & alt_mask; }
+        bool alt() const { return (modifiers() & alt_mask) != 0; }
     };
 
     class mouse_event: public virtual input_event {
