@@ -40,7 +40,34 @@
 #include <clocale>
 #include <cassert>
 
+#ifdef WIN32
+// minimal getopt(3) implementation to work on Windows, too
+char* optarg = 0;
+int optind = 1;
+
+int getopt(int argc, char* const argv[], const char* optstring)
+{
+    std::string opts(optstring);
+
+    if (optind >= argc)
+        return -1;
+    if (*argv[optind] != '-')
+        return -1;
+
+    char opt = argv[optind++][1];
+    std::string::size_type n = opts.find(opt);
+
+    if (n == std::string::npos)
+        return '?';
+    if (n < opts.length() - 1 && opts[n + 1] == ':')
+        optarg = argv[optind++];
+    else
+        optarg = 0;
+    return opt;
+}
+#else
 #include <getopt.h>
+#endif
 
 using namespace jacui;
 

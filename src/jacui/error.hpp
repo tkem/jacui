@@ -37,8 +37,7 @@ namespace jacui {
     */
     class error: public std::runtime_error {
     public:
-        explicit error(const std::string& msg) 
-            : runtime_error(msg) { }
+        explicit error(const std::string& msg);
     };
 }
 

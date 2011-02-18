@@ -27,3 +27,9 @@
  */
 
 #include "jacui/error.hpp"
+
+namespace jacui {
+    error::error(const std::string& msg) : runtime_error(msg) 
+    { 
+    }
+}
