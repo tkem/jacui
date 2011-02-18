@@ -41,7 +41,7 @@ libjacui_sdl1_2_include_HEADERS = \
 
 libjacui_sdl1_2_includedir = $(includedir)/jacui
 
-libjacui_sdl1_2_la_LDFLAGS = -version-info $(JACUI_SO_VERSION)
+libjacui_sdl1_2_la_LDFLAGS = -version-info $(LT_VERSION)
 libjacui_sdl1_2_la_CPPFLAGS = -I$(top_srcdir)/src $(SDL_CFLAGS)
 libjacui_sdl1_2_la_LIBADD = $(SDL_LIBS)
 
@@ -64,4 +64,4 @@ fontview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 doxygen:
 	doxygen
 
-EXTRA_DIST = Doxyfile jacui.sln *.props *.vcxproj
+EXTRA_DIST = Doxyfile *.sln *.props *.vcxproj *.vcxproj.user
