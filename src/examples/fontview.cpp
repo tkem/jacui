@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
     
     font f(bitstream_vera_ttf, sizeof bitstream_vera_ttf, 12);
     bool unicode = false;
-    float ptsize = 12;
+    float ptsize = 48;
 
     // testing and debugging
     bool use_canvas = false;
@@ -122,10 +122,11 @@ int main(int argc, char* argv[])
     std::wstring wtext;
 
     if (::optind == argc) {
+        std::cerr << "Enter text: ";
         if (unicode)
-            std::wcin >> wtext;
+            std::getline(std::wcin, wtext);
         else
-            std::cin >> text;
+            std::getline(std::cin, text);
     } else if (!unicode) {
         text = argv[::optind];
     } else {
