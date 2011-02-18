@@ -1,11 +1,11 @@
-AC_INIT([jacui], [0.1.0], [perlkoenig@gmail.com], [jacui], [http://code.google.com/p/jacui/])
+AC_INIT([jacui], [0.1.1], [perlkoenig@gmail.com], [jacui], [http://code.google.com/p/jacui/])
 AC_PREREQ([2.59])
 
 AM_INIT_AUTOMAKE([1.10 -Wall no-define])
 AC_PROG_CXX
 LT_INIT
 
-AC_SUBST([JACUI_SO_VERSION], [0:1:0])
+AC_SUBST([LT_VERSION], [0:2:0])
 
 AC_ARG_WITH([sdl-include-path],
         [AS_HELP_STRING([--with-sdl-include-path], 
