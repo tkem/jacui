@@ -74,6 +74,8 @@ void usage(std::ostream& os, const char* name)
        << "  -f FONTFILE      TrueType font file\n"
        << "  -s FONTSIZE      font size in points\n"
        << "  -u               read unicode from stdin\n"
+       << "\n"
+       << "If no TEXT is given, reads from standard input.\n"
        << std::endl;
 }
 
@@ -122,7 +124,6 @@ int main(int argc, char* argv[])
     std::wstring wtext;
 
     if (::optind == argc) {
-        std::cerr << "Enter text: ";
         if (unicode)
             std::getline(std::wcin, wtext);
         else
