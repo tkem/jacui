@@ -41,13 +41,13 @@ namespace jacui {
 
         canvas(const canvas& rhs);
 
-        explicit canvas(size2d size);
+        explicit canvas(const size2d& size);
 
         canvas(std::size_t width, std::size_t height);
 
         ~canvas();
 
-        void resize(size2d size);
+        void resize(const size2d& size);
 
         void resize(std::size_t width, std::size_t height);
 

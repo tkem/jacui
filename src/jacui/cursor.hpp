@@ -41,7 +41,7 @@ namespace jacui {
     */
     class cursor {
     public:
-        cursor(const void* data, const void* mask, size2d size, point2d point);
+        cursor(const void* data, const void* mask, const size2d& size, const point2d& point);
 
         cursor(const cursor& rhs);
 

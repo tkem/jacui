@@ -235,12 +235,12 @@ namespace jacui {
         return res;
     }
 
-    void font::draw(surface& s, const std::string& text, color c, point2d p) const
+    void font::draw(surface& s, const std::string& text, color c, const point2d& p) const
     {
         draw(s, text, c, p.x, p.y);
     }
 
-    void font::draw(surface& s, const std::wstring& text, color c, point2d p) const
+    void font::draw(surface& s, const std::wstring& text, color c, const point2d& p) const
     {
         draw(s, text, c, p.x, p.y);
     }

@@ -54,7 +54,7 @@ namespace jacui {
     {
     }
 
-    canvas::canvas(size2d size) 
+    canvas::canvas(const size2d& size) 
         : pimpl_(impl::make_impl(make_surface(size.width, size.height)))
     {
     }
@@ -71,7 +71,7 @@ namespace jacui {
         }
     }
 
-    void canvas::resize(size2d size)
+    void canvas::resize(const size2d& size)
     {
         canvas tmp(size);
         tmp.blit(*this);

@@ -54,7 +54,7 @@ namespace jacui {
         }
     };
 
-    cursor::cursor(const void* data, const void* mask, size2d size, point2d point)
+    cursor::cursor(const void* data, const void* mask, const size2d& size, const point2d& point)
         : pimpl_(impl::make_impl(make_cursor(data, mask, size, point)))
     {
     }
