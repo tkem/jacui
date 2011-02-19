@@ -1,4 +1,4 @@
-/**
+/*
  * JACUI - Just Another C++ User Interface Library
  *
  * Copyright (C) 2011 The JACUI Project

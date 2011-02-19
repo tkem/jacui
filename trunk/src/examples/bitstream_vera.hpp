@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2003 Bitstream, Inc.
  * All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.
  * 

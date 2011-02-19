@@ -61,7 +61,7 @@ fontview_SOURCES = \
 
 fontview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 
-doxygen:
-	doxygen
+docs: Doxyfile $(HEADERS)
+	doxygen Doxyfile
 
 EXTRA_DIST = Doxyfile *.sln *.props *.vcxproj *.vcxproj.user
