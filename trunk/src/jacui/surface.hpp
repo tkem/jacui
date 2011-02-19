@@ -53,23 +53,23 @@ namespace jacui {
 
         rect2d clip() const;
 
-        rect2d clip(rect2d r);
+        rect2d clip(const rect2d& r);
 
         void fill(color c) {
             fill(c, size());
         }
 
-        void fill(color c, rect2d r);
+        void fill(color c, const rect2d& r);
 
         void blit(const surface& s) {
             blit(s, s.size(), 0, 0);
         }
 
-        void blit(const surface& s, rect2d dst) {
+        void blit(const surface& s, const rect2d& dst) {
             blit(s, s.size(), dst);
         }
 
-        void blit(const surface& s, point2d dst) {
+        void blit(const surface& s, const point2d& dst) {
             blit(s, s.size(), dst);
         }
 
@@ -77,11 +77,11 @@ namespace jacui {
             blit(s, s.size(), x, y);
         }
 
-        void blit(const surface& s, rect2d src, rect2d dst);
+        void blit(const surface& s, const rect2d& src, const rect2d& dst);
 
-        void blit(const surface& s, rect2d src, point2d dst);
+        void blit(const surface& s, const rect2d& src, const point2d& dst);
 
-        void blit(const surface& s, rect2d src, int x, int y);
+        void blit(const surface& s, const rect2d& src, int x, int y);
 
     public:
         virtual detail::surface_type* detail() const = 0;

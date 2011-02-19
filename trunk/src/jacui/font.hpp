@@ -71,9 +71,9 @@ namespace jacui {
 
         canvas render(const std::wstring& text, color fg, color bg) const;
 
-        void draw(surface& s, const std::string& text, color c, point2d p) const;
+        void draw(surface& s, const std::string& text, color c, const point2d& p) const;
 
-        void draw(surface& s, const std::wstring& text, color c, point2d p) const;
+        void draw(surface& s, const std::wstring& text, color c, const point2d& p) const;
 
         void draw(surface& s, const std::string& text, color c, int x, int y) const;
 

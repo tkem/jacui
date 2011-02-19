@@ -51,7 +51,7 @@ namespace jacui {
     public:
         explicit window(const std::string& caption, flags_type f = 0);
 
-        window(const std::string& caption, size2d size, flags_type f = 0);
+        window(const std::string& caption, const size2d& size, flags_type f = 0);
 
         window(const std::string& caption, std::size_t width, std::size_t height, flags_type f = 0);
 
@@ -79,7 +79,7 @@ namespace jacui {
 
         void cursor(const jacui::cursor& c);
 
-        void resize(size2d size);
+        void resize(const size2d& size);
 
         void resize(std::size_t width, std::size_t height);
 

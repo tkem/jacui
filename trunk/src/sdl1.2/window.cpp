@@ -74,7 +74,7 @@ namespace jacui {
     {
     }
 
-    window::window(const std::string& caption, size2d s, flags_type f)
+    window::window(const std::string& caption, const size2d& s, flags_type f)
         : pimpl_(new impl(caption.c_str(), s.width, s.height, f))
     {
     }
@@ -146,7 +146,7 @@ namespace jacui {
         SDL_SetCursor(c.detail());
     }
 
-    void window::resize(size2d size)
+    void window::resize(const size2d& size)
     {
         return resize(size.width, size.height);
     }

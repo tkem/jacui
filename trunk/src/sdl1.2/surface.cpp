@@ -161,23 +161,23 @@ namespace jacui {
         }
     }
 
-    rect2d surface::clip(rect2d r)
+    rect2d surface::clip(const rect2d& r)
     {
         SDL_Surface* s = detail();
 
         if (s) {
             SDL_Rect rect;
             SDL_GetClipRect(s, &rect);
-            rect2d res(rect.x, rect.y, rect.w, rect.h);
+            rect2d tmp(rect.x, rect.y, rect.w, rect.h);
             rect = make_rect(r);
             SDL_SetClipRect(s, &rect);
-            return res;
+            return tmp;
         } else {
             return rect2d();
         }
     }
 
-    void surface::fill(color c, rect2d r)
+    void surface::fill(color c, const rect2d& r)
     {
         SDL_Surface* s = detail();
 
@@ -189,7 +189,7 @@ namespace jacui {
         }
     }
 
-    void surface::blit(const surface& s, rect2d src, rect2d dst)
+    void surface::blit(const surface& s, const rect2d& src, const rect2d& dst)
     {
         SDL_Surface* psrc = s.detail();
         SDL_Surface* pdst = detail();
@@ -211,7 +211,7 @@ namespace jacui {
         }
     }
 
-    void surface::blit(const surface& s, rect2d src, point2d dst)
+    void surface::blit(const surface& s, const rect2d& src, const point2d& dst)
     {
         SDL_Surface* psrc = s.detail();
         SDL_Surface* pdst = detail();
@@ -226,7 +226,7 @@ namespace jacui {
         }
     }
 
-    void surface::blit(const surface& s, rect2d src, int x, int y)
+    void surface::blit(const surface& s, const rect2d& src, int x, int y)
     {
         SDL_Surface* psrc = s.detail();
         SDL_Surface* pdst = detail();
