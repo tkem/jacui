@@ -31,6 +31,9 @@
 
 #include <cstddef>
 
+/**
+   \brief JACUI namespace
+*/
 namespace jacui {
     /**
        \brief JACUI point type
@@ -156,8 +159,7 @@ namespace jacui {
     };
 
     /**
-       \brief create color from 24bit RGB value, e.g. 0xffff00 ->
-       yellow
+       \brief create color from 24bit RGB value
     */
     inline color make_rgb(unsigned long rgb)
     {
@@ -165,8 +167,7 @@ namespace jacui {
     }
 
     /**
-       \brief create color from 32bit RGBA value, e.g. 0xffff0080 ->
-       yellow with 50% transparency
+       \brief create color from 32bit RGBA value
     */
     inline color make_rgba(unsigned long rgba)
     {

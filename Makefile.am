@@ -61,7 +61,10 @@ fontview_SOURCES = \
 
 fontview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 
-docs: Doxyfile $(HEADERS)
+docs: Doxyfile Doxymain $(HEADERS)
 	doxygen Doxyfile
 
-EXTRA_DIST = Doxyfile *.sln *.props *.vcxproj *.vcxproj.user
+maintainer-clean-local:
+	rm -rf docs
+
+EXTRA_DIST = Doxyfile Doxymain docs *.sln *.props *.vcxproj *.vcxproj.user
