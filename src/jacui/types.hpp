@@ -143,6 +143,8 @@ namespace jacui {
 
         color(int red, int green, int blue, int alpha) : r(red), g(green), b(blue), a(alpha) { }
 
+        bool opaque() const { return a != 0; }
+
         unsigned long rgb() const { return r << 16 | g << 8 | b; }
 
         unsigned long rgba() const { return r << 24 | g << 16 | b << 8 | a; }
