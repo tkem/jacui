@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
     
     font f(bitstream_vera_ttf, sizeof bitstream_vera_ttf, 12);
     bool unicode = false;
-    float ptsize = 48;
+    float ptsize = 12;
 
     // testing and debugging
     bool use_canvas = false;
