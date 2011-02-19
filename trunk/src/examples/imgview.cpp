@@ -250,24 +250,25 @@ void output(std::ostream& os, const window& s, const event& e)
     os << std::endl;
 }
 
-rect2d make_centered(rect2d r, size2d s)
+rect2d make_centered(point2d p, size2d img, size2d scr)
 {
-    if (r.width < s.width || r.x < s.width / 2)
-        r.x = 0;
-    else if (r.x > r.width - s.width)
-        r.x = r.width - s.width;
-    else
-        r.x -= s.width / 2;
+    rect2d r(0, 0, img.width, img.height);
 
-    if (r.height < s.height || r.y < s.height / 2)
-        r.y = 0;
-    else if (r.y > r.height - s.height)
-        r.y = r.height - s.height;
-    else
-        r.y -= s.height / 2;
+    if (img.width > scr.width) {
+        if (p.x > img.width - scr.width / 2)
+            r.x = img.width - scr.width;
+        else if (p.x > scr.width / 2)
+            r.x = p.x - scr.width / 2;
+        r.width = scr.width;
+    }
 
-    r.width = std::min(r.width, s.width);
-    r.height = std::min(r.height, s.height);
+    if (img.height > scr.height) {
+        if (p.y > img.height - scr.height / 2)
+            r.y = img.height - scr.height;
+        else if (p.y > scr.height / 2)
+            r.y = p.y - scr.height / 2;
+        r.height = scr.height;
+    }
 
     return r;
 }
@@ -308,9 +309,7 @@ void update(window& win, const image& img, const font& f, const char* path, poin
     if (win.width() > img.width() || win.height() > img.height()) {
         win.view().fill(make_rgb(0));
     }
-    win.view().blit(
-        img, make_centered(rect2d(x, y, imgsz.width, imgsz.height), winsz), point2d()
-        );
+    win.view().blit(img, make_centered(point2d(x, y), imgsz, winsz), point2d());
     draw(win.view(), f, path);
     win.update();
 }
