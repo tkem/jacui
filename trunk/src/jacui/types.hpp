@@ -84,17 +84,31 @@ namespace jacui {
     struct rect2d {
         rect2d() : x(0), y(0), width(0), height(0) { }
 
-        rect2d(const size2d& s) : x(0), y(0), width(s.width), height(s.height) { }
-
         rect2d(std::size_t xsize, std::size_t ysize)
             : x(0), y(0), width(xsize), height(ysize) { }
 
-        rect2d(std::size_t xpos, std::size_t ypos, std::size_t xsize, std::size_t ysize)
-            : x(xpos), y(ypos), width(xsize), height(ysize) { }
+        rect2d(std::size_t xoff, std::size_t yoff, std::size_t xsize, std::size_t ysize)
+            : x(xoff), y(yoff), width(xsize), height(ysize) { }
+
+        rect2d(const size2d& s) 
+            : x(0), y(0), width(s.width), height(s.height) { }
+
+        rect2d(const point2d& p, const size2d& s) 
+            : x(p.x), y(p.y), width(s.width), height(s.height) { }
 
         bool empty() const { return width == 0 || height == 0; }
 
         size2d size() const { return size2d(width, height); }
+
+        point2d offset() const { return point2d(x, y); }
+
+        bool includes(const point2d& p) const {
+            return includes(p.x, p.y);
+        }
+
+        bool includes(std::size_t px, std::size_t py) const {
+            return px >= x && py >= y && px < x + width && py < y + height;
+        }
 
         std::size_t x;
         std::size_t y;
@@ -140,7 +154,8 @@ namespace jacui {
     };
 
     /**
-       \brief create color from RGB value, e.g. 0xffff00 -> yellow
+       \brief create color from 24bit RGB value, e.g. 0xffff00 ->
+       yellow
     */
     inline color make_rgb(unsigned long rgb)
     {
@@ -148,7 +163,8 @@ namespace jacui {
     }
 
     /**
-       \brief create color from RGBA value, e.g. 0xffff0080 -> yellow with 50% transparency
+       \brief create color from 32bit RGBA value, e.g. 0xffff0080 ->
+       yellow with 50% transparency
     */
     inline color make_rgba(unsigned long rgba)
     {
