@@ -1,0 +1,32 @@
+JACUI - Just Another C++ User Interface Library
+
+JACUI is intended to be a simple, lightweight, cross-platform,
+"modern" C++ user interface library.  When it's finished, I mean.
+Currently, it's just a simple C++ wrapper for the SDL (Simple
+Directmedia Layer) on Linux and Windows.
+
+To compile JACUI, SDL version 1.2 and compatible versions of SDL_image
+and SDL_ttf are required.  You can download these from 
+
+    http://www.libsdl.org
+
+To compile and install JACUI on Linux and possibly other UN*X
+platforms, run the (hopefully) already familiar stanza of
+
+    ./configure
+    make
+    make install
+
+JACUI expects SDL header files in /usr/include/SDL and SDL libraries
+in /usr/lib, as is the case on Debian-based distributions.  You can
+override this providing the --with-sdl-include-path and
+--with-sdl-lib-path options to configure.
+
+To compile JACUI on MS Windows platform, Visual Studio 2010 is
+recommended.  Download and extract the Win32 SDL*-devel-*-VC.zip from
+www.libsdl.org, and edit the UserMacros section in sdl1.2.props to
+reflect the path to your SDL installation.  After that, open the
+VS2010 solution file (jacui.sln) and hit F7 to compile.
+
+For information on how to use JACUI, see the example programs in the
+src/exaples directory, or the Doxygen documentation in docs/html.
