@@ -27,3 +27,6 @@ recommended.  Download and extract the Win32 SDL*-devel-*-VC.zip from
 www.libsdl.org, and edit the UserMacros section in sdl1.2.props to
 reflect the path to your SDL installation.  After that, open the
 VS2010 solution file (jacui.sln) and hit F7 to compile.
+
+For information on how to use JACUI, see the example programs in the
+src/exaples directory, or the Doxygen documentation in docs/html.
