@@ -1,4 +1,4 @@
-AC_INIT([jacui], [0.2.0], [perlkoenig@gmail.com], [jacui], [http://code.google.com/p/jacui/])
+AC_INIT([jacui], [0.2.1], [perlkoenig@gmail.com], [jacui], [http://code.google.com/p/jacui/])
 AC_PREREQ([2.59])
 
 AM_INIT_AUTOMAKE([1.10 -Wall no-define])

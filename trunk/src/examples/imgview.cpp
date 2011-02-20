@@ -391,7 +391,7 @@ int main(int argc, char* argv[])
 
     update(win, img, fnt, argv[index]);
 
-    window::timer_type timer = interval ? win.events().set_interval(interval) : 0;
+    timer_event::timer_type timer = interval ? win.events().set_interval(interval) : 0;
 
     test_event tevent;
 
