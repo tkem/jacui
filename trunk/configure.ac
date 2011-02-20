@@ -5,7 +5,7 @@ AM_INIT_AUTOMAKE([1.10 -Wall no-define])
 AC_PROG_CXX
 LT_INIT
 
-AC_SUBST([SO_VERSION], [1:0:1])
+AC_SUBST([SO_VERSION], [1:1:1])
 
 AC_ARG_WITH([sdl-include-path],
         [AS_HELP_STRING([--with-sdl-include-path], 
