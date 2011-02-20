@@ -37,6 +37,9 @@ namespace jacui {
     */
     class event {
     public:
+        /**
+           \brief event type enumeration
+        */
         enum event_type {
             noevent, // also a cancelled event
             resize,
@@ -99,30 +102,43 @@ namespace jacui {
     */
     class input_event: public virtual event {
     public:
-        // modifier key masks
+        /**
+         * \brief modifier key mask type
+         */
         typedef unsigned int modmask_type;
 
+        /**
+         * \brief shift modifier mask
+         */
         static const modmask_type shift_mask;
+
+        /**
+         * \brief ctrl modifier mask
+         */
         static const modmask_type ctrl_mask;
+
+        /**
+         * \brief alt modifier mask
+         */
         static const modmask_type alt_mask;
 
         /**
-         * \brief the modifier mask
+         * \brief the modifier key mask
          */
         virtual modmask_type modifiers() const = 0;
 
         /**
-         * \brief whether the shift modifier was present
+         * \brief whether the shift modifier key was pressed
          */
         bool shift() const { return (modifiers() & shift_mask) != 0; }
 
         /**
-         * \brief whether the ctrl modifier was present
+         * \brief whether the ctrl modifier key was pressed
          */
         bool ctrl() const { return (modifiers() & ctrl_mask) != 0; }
 
         /**
-         * \brief whether the alt modifier was present
+         * \brief whether the alt modifier key was pressed
          */
         bool alt() const { return (modifiers() & alt_mask) != 0; }
     };
@@ -132,10 +148,24 @@ namespace jacui {
     */
     class mouse_event: public virtual input_event {
     public:
+        /**
+         * \brief mouse button type
+         */
         typedef unsigned int button_type;
 
+        /**
+         * \brief left mouse button
+         */
         static const button_type lbutton;
+
+        /**
+         * \brief middle mouse button
+         */
         static const button_type mbutton;
+
+        /**
+         * \brief right mouse button
+         */
         static const button_type rbutton;
 
         /**
@@ -154,7 +184,9 @@ namespace jacui {
     */
     class keyboard_event: public virtual input_event {
     public:
-        // key type extends ASCII characters
+        /**
+         * \brief key type
+         */
         typedef int key_type;
 
         // non-printable ASCII characters
@@ -213,10 +245,13 @@ namespace jacui {
     */
     class timer_event: public virtual event {
     public:
+        /**
+           \brief timer id type
+        */
         typedef unsigned int timer_type;
 
         /**
-           \brief the timer ID for this event
+           \brief the unique timer id for this event
         */
         virtual timer_type timer() const = 0;
     };

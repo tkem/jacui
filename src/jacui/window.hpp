@@ -41,13 +41,25 @@ namespace jacui {
     */
     class window {
     public:
+        /**
+           \brief window creation flags type
+        */
         typedef unsigned int flags_type;
 
+        /**
+           \brief open window in fullscreen mode
+        */
         static const flags_type fullscreen;
-        static const flags_type noresize;
-        static const flags_type noframe;
 
-        typedef timer_event::timer_type timer_type;
+        /**
+           \brief prevent resizing of window
+        */
+        static const flags_type noresize;
+
+        /**
+           \brief hide window frame
+        */
+        static const flags_type noframe;
 
     public:
         /**
