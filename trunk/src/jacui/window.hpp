@@ -37,11 +37,12 @@
 
 namespace jacui {
     /**
-       \brief JACUI window class
+       \brief jacui window class
     */
     class window {
     public:
         typedef unsigned int flags_type;
+
         static const flags_type fullscreen;
         static const flags_type noresize;
         static const flags_type noframe;
@@ -49,42 +50,99 @@ namespace jacui {
         typedef timer_event::timer_type timer_type;
 
     public:
+        /**
+           \brief create a window with a specified caption
+        */
         explicit window(const std::string& caption, flags_type f = 0);
 
+        /**
+           \brief create a window with a specified caption and size
+        */
         window(const std::string& caption, const size2d& size, flags_type f = 0);
 
+        /**
+           \brief create a window with a specified caption and size
+        */
         window(const std::string& caption, std::size_t width, std::size_t height, flags_type f = 0);
 
+        /**
+           \brief destroy a window
+        */
         ~window();
 
+        /**
+           \brief the window's size
+        */
         size2d size() const;
 
+        /**
+           \brief the window's width
+        */
         std::size_t width() const;
 
+        /**
+           \brief the window's height
+        */
         std::size_t height() const;
 
+        /**
+           \brief the window's caption
+        */
         std::string caption() const;
 
+        /**
+           \brief set the window's caption
+        */
         void caption(const std::string& s);
 
+        /**
+           \brief the window's view port
+        */
         surface& view();
 
+        /**
+           \brief the window's view port
+        */
         const surface& view() const;
 
+        /**
+           \brief the window's event queue
+        */
         event_queue& events();
 
+        /**
+           \brief the window's event queue
+        */
         const event_queue& events() const;
 
+        /**
+           \brief enable or disable the window's mouse cursor
+        */
         void cursor(bool enable);
 
+        /**
+           \brief set the window's mouse cursor
+        */
         void cursor(const jacui::cursor& c);
 
+        /**
+           \brief resize a window
+        */
         void resize(const size2d& size);
 
+        /**
+           \brief resize a window
+        */
         void resize(std::size_t width, std::size_t height);
 
+        /**
+           \brief update a window
+        */
         void update();
 
+        /**
+           \brief close a window
+        */
         void close();
 
     private:

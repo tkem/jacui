@@ -37,50 +37,103 @@ namespace jacui {
     }
 
     /**
-       \brief JACUI surface class
+       \brief jacui surface class
+
+       A surface represents a collection of pixels onto which the
+       application can draw.  Surfaces can exist in purely in memory
+       (canvas, image) or in the platform user interface
+       (window::view).
     */
     class surface {
     public:
+        /**
+           \brief destroy a surface
+        */
         virtual ~surface();
 
+        /**
+           \brief whether the surface is empty
+        */
         bool empty() const;
 
+        /**
+           \brief the size of this surface
+        */
         size2d size() const;
 
+        /**
+           \brief the width of this surface
+        */
         std::size_t width() const;
 
+        /**
+           \brief the height of this surface
+        */
         std::size_t height() const;
 
+        /**
+           \brief the clipping area of this surface
+        */
         rect2d clip() const;
 
+        /**
+           \brief set the clipping area of a surface
+        */
         rect2d clip(const rect2d& r);
 
+        /**
+           \brief fill a surface with a specified color
+        */
         void fill(color c) {
             fill(c, size());
         }
 
+        /**
+           \brief fill a surface with a specified color
+        */
         void fill(color c, const rect2d& r);
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s) {
             blit(s, s.size(), 0, 0);
         }
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s, const rect2d& dst) {
             blit(s, s.size(), dst);
         }
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s, const point2d& dst) {
             blit(s, s.size(), dst);
         }
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s, int x, int y) {
             blit(s, s.size(), x, y);
         }
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s, const rect2d& src, const rect2d& dst);
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s, const rect2d& src, const point2d& dst);
 
+        /**
+           \brief blit the pixels of another surface to this surface
+        */
         void blit(const surface& s, const rect2d& src, int x, int y);
 
     public:

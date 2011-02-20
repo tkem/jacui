@@ -37,18 +37,44 @@ namespace jacui {
     }
 
     /**
-       \brief JACUI cursor class
+       \brief jacui cursor class
     */
     class cursor {
     public:
+        /**
+           \brief create a cursor from bitmap data
+
+           \param data the bitmap data for the cursor
+           \param mask the bitmap mask for the cursor
+           \param size the size of the cursor
+           \param point the location of the mouse position within the cursor
+        */
         cursor(const void* data, const void* mask, const size2d& size, const point2d& point);
 
+        /**
+           \brief create a copy an existing cursor
+
+           \param rhs the cursor to be copied
+        */
         cursor(const cursor& rhs);
 
+        /**
+           \brief destroy a cursor
+        */
         ~cursor();
 
+        /**
+           \brief swap two cursor instances
+
+           \param rhs the cursor to be swapped
+        */
         void swap(cursor& rhs);
 
+        /**
+           \brief copy an existing cursor
+
+           \param rhs the cursor to be copied
+        */
         cursor& operator=(const cursor& rhs) {
             cursor tmp(rhs);
             swap(tmp);
@@ -63,6 +89,12 @@ namespace jacui {
         impl* pimpl_;
     };
 
+    /**
+       \brief swap two cursor instances
+
+       \param lhs the first cursor to be swapped
+       \param rhs the second cursor to be swapped
+    */
     inline void swap(cursor& lhs, cursor& rhs) {
         rhs.swap(lhs);
     }
