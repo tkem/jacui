@@ -34,6 +34,9 @@
 namespace jacui {
     /**
        \brief jacui image class
+
+       An image represents a surface in memory that has been loaded
+       from an external source, i.e. a file or a memory area.
     */
     class image: public surface {
     public:
