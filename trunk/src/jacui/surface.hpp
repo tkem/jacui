@@ -137,6 +137,9 @@ namespace jacui {
         void blit(const surface& s, const rect2d& src, int x, int y);
 
     public:
+        /**
+           \brief implementation detail
+        */
         virtual detail::surface_type* detail() const = 0;
     };
 }

@@ -82,6 +82,9 @@ namespace jacui {
         }
 
     public:
+        /**
+           \brief implementation detail
+        */
         detail::cursor_type* detail() const;
 
     private:
