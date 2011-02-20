@@ -11,7 +11,7 @@ and SDL_ttf are required.  You can download these from
     http://www.libsdl.org
 
 To compile and install JACUI on Linux and possibly other UN*X
-platforms, run the (hopefully) already familiar stanza of
+platforms, run
 
     ./configure
     make

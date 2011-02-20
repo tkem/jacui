@@ -33,7 +33,7 @@
 
 namespace jacui {
     /**
-       \brief Generic JACUI event class
+       \brief generic jacui event class
     */
     class event {
     public:
@@ -50,55 +50,108 @@ namespace jacui {
             quit,
             user
         };
-        
+
+        /**
+         * \brief destroy an event
+         */
         virtual ~event();
 
+        /**
+         * \brief the type of the event
+         */
         virtual event_type type() const = 0;
 
+        /**
+         * \brief the name of the event
+         */
         virtual const char* name() const = 0;
 
+        /**
+         * \brief cancel an event
+         */
         virtual void cancel() = 0;
     };
 
+    /**
+       \brief jacui resize event class
+    */
     class resize_event: public virtual event {
     public:
+        /**
+         * \brief the new size of the window
+         */
         virtual size2d size() const = 0;
     };
 
+    /**
+       \brief jacui redraw event class
+    */
     class redraw_event: public virtual event {
     public:
+        /**
+         * \brief the region to be redrawn
+         */
         virtual rect2d rect() const = 0;
     };
 
+    /**
+       \brief jacui input event class
+    */
     class input_event: public virtual event {
     public:
         // modifier key masks
         typedef unsigned int modmask_type;
+
         static const modmask_type shift_mask;
         static const modmask_type ctrl_mask;
         static const modmask_type alt_mask;
 
+        /**
+         * \brief the modifier mask
+         */
         virtual modmask_type modifiers() const = 0;
 
+        /**
+         * \brief whether the shift modifier was present
+         */
         bool shift() const { return (modifiers() & shift_mask) != 0; }
 
+        /**
+         * \brief whether the ctrl modifier was present
+         */
         bool ctrl() const { return (modifiers() & ctrl_mask) != 0; }
 
+        /**
+         * \brief whether the alt modifier was present
+         */
         bool alt() const { return (modifiers() & alt_mask) != 0; }
     };
 
+    /**
+       \brief jacui mouse event class
+    */
     class mouse_event: public virtual input_event {
     public:
         typedef unsigned int button_type;
+
         static const button_type lbutton;
         static const button_type mbutton;
         static const button_type rbutton;
 
+        /**
+         * \brief the mouse button for this event
+         */
         virtual button_type button() const = 0;
 
+        /**
+         * \brief the position of the mouse cursor
+         */
         virtual point2d point() const = 0;
     };
 
+    /**
+       \brief jacui keyboard event class
+    */
     class keyboard_event: public virtual input_event {
     public:
         // key type extends ASCII characters
@@ -144,41 +197,80 @@ namespace jacui {
         static const key_type f11;
         static const key_type f12;
 
+        /**
+           \brief the key code for this event
+        */
         virtual key_type key() const = 0;
 
+        /**
+           \brief the wide character for this event
+        */
         virtual wchar_t wchar() const = 0;
     };
 
+    /**
+       \brief jacui timer event class
+    */
     class timer_event: public virtual event {
     public:
         typedef unsigned int timer_type;
 
+        /**
+           \brief the timer ID for this event
+        */
         virtual timer_type timer() const = 0;
     };
 
+    /**
+       \brief jacui user event class
+    */
     class user_event: public virtual event {
     public:
+        /**
+           \brief always set to user
+        */
         event_type type() const { return user; }
     };
 
 
     /**
-       \brief JACUI event queue base class
+       \brief jacui event queue base class
     */
     class event_queue {
     public:
+        /**
+           \brief destroy an event queue
+        */
         virtual ~event_queue();
 
+        /**
+           \brief wait for next event
+        */
         virtual event* wait() = 0;
 
+        /**
+           \brief poll pending events
+        */
         virtual event* poll() = 0;
 
+        /**
+           \brief add an event to the event queue
+        */
         virtual void push(event* e) = 0;
 
+        /**
+           \brief create a timer with a given timeout
+        */
         virtual timer_event::timer_type set_timeout(unsigned long ms) = 0;
 
+        /**
+           \brief create a recurring timer with a given time interval
+        */
         virtual timer_event::timer_type set_interval(unsigned long ms) = 0;
 
+        /**
+           \brief clear an existing timer
+        */
         virtual bool clear_timer(timer_event::timer_type timer) = 0;
     };
 }

@@ -33,26 +33,72 @@
 
 namespace jacui {
     /**
-       \brief JACUI canvas class
+       \brief jacui canvas class
+
+       A canvas represents a surface in memory onto which the
+       application can draw.
     */
     class canvas: public surface {
     public:
+        /**
+           \brief create an empty canvas
+        */
         canvas();
 
+        /**
+           \brief create a copy of an existing canvas
+
+           \param rhs the canvas to be copied
+        */
         canvas(const canvas& rhs);
 
+        /**
+           \brief create a canvas with a specified size
+
+           \param size the size of the canvas
+        */
         explicit canvas(const size2d& size);
 
+        /**
+           \brief create a canvas with a specified size
+
+           \param width the width of the canvas
+           \param height the height of the canvas
+        */
         canvas(std::size_t width, std::size_t height);
 
+        /**
+           \brief destroy a canvas
+        */
         ~canvas();
 
+        /**
+           \brief resize a canvas
+
+           \param size the new size of the canvas
+        */
         void resize(const size2d& size);
 
+        /**
+           \brief resize a canvas
+
+           \param width the new width of the canvas
+           \param height the new height of the canvas
+        */
         void resize(std::size_t width, std::size_t height);
 
+        /**
+           \brief swap two canvas instances
+
+           \param rhs the canvas to be swapped
+        */
         void swap(canvas& rhs);
 
+        /**
+           \brief copy an existing canvas
+
+           \param rhs the canvas to be copied
+        */
         canvas& operator=(const canvas& rhs) {
             canvas tmp(rhs);
             swap(tmp);
@@ -67,6 +113,12 @@ namespace jacui {
         impl* pimpl_;
     };
 
+    /**
+       \brief swap two canvas instances
+
+       \param lhs the first canvas to be swapped
+       \param rhs the second canvas to be swapped
+    */
     inline void swap(canvas& lhs, canvas& rhs) {
         lhs.swap(rhs);
     }

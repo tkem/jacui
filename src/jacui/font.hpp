@@ -35,54 +35,127 @@
 
 namespace jacui {
     /**
-       \brief JACUI font class
+       \brief jacui font class
     */
     class font {
     public:
+        /**
+           \brief create a copy of an existing font
+        */
         font(const font& rhs);
 
+        /**
+           \brief create a copy of an existing font with a spezified size
+        */
         font(const font& rhs, float ptsize);
 
+        /**
+           \brief create a font from a file
+        */
         font(const char* filename, float ptsize);
 
+        /**
+           \brief create a font from memory
+        */
         font(const void* data, std::size_t size, float ptsize);
         
+        /**
+           \brief destroy a font
+        */
         ~font();
 
+        /**
+           \brief the point size of this font
+        */
         float size() const;
 
+        /**
+           \brief the family name of this font
+        */
         const char* family() const;
 
+        /**
+           \brief the style name of this font
+        */
         const char* style() const;
 
+        /**
+           \brief the height of this font
+        */
         int height() const;
 
+        /**
+           \brief the ascent of this font
+        */
         int ascent() const;
 
+        /**
+           \brief the descent of this font
+        */
         int descent() const;
 
+        /**
+           \brief the leading of this font
+        */
         int leading() const;
 
+        /**
+           \brief calculate the size of some text
+        */
         size2d size(const std::string& text) const;
 
+        /**
+           \brief calculate the size of some text
+        */
         size2d size(const std::wstring& text) const;
 
+        /**
+           \brief render some text to a canvas
+        */
         canvas render(const std::string& text, color fg, color bg) const;
 
+        /**
+           \brief render some text to a canvas
+        */
         canvas render(const std::wstring& text, color fg, color bg) const;
 
+        /**
+           \brief draw some text onto a surface
+        */
         void draw(surface& s, const std::string& text, color c, const point2d& p) const;
 
+        /**
+           \brief draw some text onto a surface
+        */
         void draw(surface& s, const std::wstring& text, color c, const point2d& p) const;
 
+        /**
+           \brief draw some text onto a surface
+        */
         void draw(surface& s, const std::string& text, color c, int x, int y) const;
 
+        /**
+           \brief draw some text onto a surface
+        */
         void draw(surface& s, const std::wstring& text, color c, int x, int y) const;
 
+        /**
+           \brief resize a font
+        */
         void resize(float ptsize);
 
+        /**
+           \brief swap two font instances
+
+           \param rhs the font to be swapped
+        */
         void swap(font& rhs);
 
+        /**
+           \brief copy an existing font
+
+           \param rhs the font to be copied
+        */
         font& operator=(const font& rhs) {
             font tmp(rhs);
             swap(tmp);
@@ -94,6 +167,12 @@ namespace jacui {
         impl* pimpl_;
     };
 
+    /**
+       \brief swap two font instances
+
+       \param lhs the first font to be swapped
+       \param rhs the second font to be swapped
+    */
     inline void swap(font& lhs, font& rhs) {
         lhs.swap(rhs);
     }

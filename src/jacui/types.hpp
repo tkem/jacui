@@ -32,11 +32,11 @@
 #include <cstddef>
 
 /**
-   \brief JACUI namespace
+   \brief jacui namespace
 */
 namespace jacui {
     /**
-       \brief JACUI point type
+       \brief jacui point type
     */
     struct point2d {
         point2d() : x(0), y(0) { }
@@ -58,7 +58,7 @@ namespace jacui {
     }
 
     /**
-       \brief JACUI size type
+       \brief jacui size type
     */
     struct size2d {
         size2d() : width(0), height(0) { }
@@ -82,7 +82,7 @@ namespace jacui {
     }
 
     /**
-       \brief JACUI rectangle type
+       \brief jacui rectangle type
     */
     struct rect2d {
         rect2d() : x(0), y(0), width(0), height(0) { }
@@ -136,7 +136,7 @@ namespace jacui {
     }
 
     /**
-       \brief JACUI color type
+       \brief jacui color type
     */
     struct color {
     public:

@@ -33,26 +33,57 @@
 
 namespace jacui {
     /**
-       \brief JACUI image class
+       \brief jacui image class
     */
     class image: public surface {
     public:
+        /**
+           \brief create an empty image
+        */
         image();
 
+        /**
+           \brief create a copy of an existing image
+        */
         image(const image& rhs);
 
+        /**
+           \brief create an image from a file
+        */
         explicit image(const char* filename);
 
+        /**
+           \brief create an image from memory
+        */
         image(const void* data, std::size_t size);
 
+        /**
+          \brief destroy an image
+        */
         ~image();
 
+        /**
+          \brief load an image from a file
+        */
         void load(const char* filename);
 
+        /**
+          \brief load an image from memory
+        */
         void load(const void* data, std::size_t size);
 
+        /**
+           \brief swap two image instances
+
+           \param rhs the image to be swapped
+        */
         void swap(image& rhs);
 
+        /**
+           \brief copy an existing image
+
+           \param rhs the image to be swapped
+        */
         image& operator=(const image& rhs) {
             image tmp(rhs);
             swap(tmp);
@@ -67,6 +98,12 @@ namespace jacui {
         impl* pimpl_;
     };
 
+    /**
+       \brief swap two image instances
+
+       \param lhs the first image to be swapped
+       \param rhs the second image to be swapped
+    */
     inline void swap(image& lhs, image& rhs) {
         lhs.swap(rhs);
     }

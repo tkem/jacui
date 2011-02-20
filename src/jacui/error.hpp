@@ -33,10 +33,15 @@
 
 namespace jacui {
     /**
-       \brief Generic JACUI exception class
+       \brief generic jacui exception class
     */
     class error: public std::runtime_error {
     public:
+        /**
+           \brief create an error exception
+
+           \param msg the error message
+        */
         explicit error(const std::string& msg);
     };
 }

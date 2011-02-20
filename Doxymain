@@ -21,7 +21,7 @@
     \subsection install_linux Installation on GNU/Linux Systems
 
     To compile and install JACUI on Linux and possibly other UN*X
-    platforms, run the (hopefully) already familiar stanza of
+    platforms, run
 
     \code
     ./configure
