@@ -91,6 +91,9 @@ namespace jacui {
         }
 
     public:
+        /**
+           \brief implementation detail
+        */
         detail::surface_type* detail() const;
 
     private:
