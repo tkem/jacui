@@ -11,7 +11,21 @@ AM_CXXFLAGS =
 
 AUTOMAKE_OPTIONS = subdir-objects
 
+include_HEADERS = \
+	src/jacui/canvas.hpp \
+	src/jacui/cursor.hpp \
+	src/jacui/cursors.hpp \
+	src/jacui/error.hpp \
+	src/jacui/event.hpp \
+	src/jacui/font.hpp \
+	src/jacui/image.hpp \
+	src/jacui/surface.hpp \
+	src/jacui/types.hpp \
+	src/jacui/window.hpp
+
 lib_LTLIBRARIES = libjacui-sdl1.2.la
+
+libjacui_sdl1_2_includedir = $(includedir)/jacui
 
 libjacui_sdl1_2_la_SOURCES = \
 	src/sdl1.2/canvas.cpp \
@@ -27,20 +41,6 @@ libjacui_sdl1_2_la_SOURCES = \
 	src/sdl1.2/types.cpp \
 	src/sdl1.2/window.cpp
 
-libjacui_sdl1_2_include_HEADERS = \
-	src/jacui/canvas.hpp \
-	src/jacui/cursor.hpp \
-	src/jacui/cursors.hpp \
-	src/jacui/error.hpp \
-	src/jacui/event.hpp \
-	src/jacui/font.hpp \
-	src/jacui/image.hpp \
-	src/jacui/surface.hpp \
-	src/jacui/types.hpp \
-	src/jacui/window.hpp
-
-libjacui_sdl1_2_includedir = $(includedir)/jacui
-
 libjacui_sdl1_2_la_LDFLAGS = -version-info $(SO_VERSION)
 libjacui_sdl1_2_la_CPPFLAGS = -I$(top_srcdir)/src $(SDL_CFLAGS)
 libjacui_sdl1_2_la_LIBADD = $(SDL_LIBS)
@@ -48,16 +48,16 @@ libjacui_sdl1_2_la_LIBADD = $(SDL_LIBS)
 noinst_PROGRAMS = imgview fontview
 
 imgview_SOURCES = \
-	src/examples/imgview.cpp \
-	src/examples/bitstream_vera.hpp \
-	src/examples/bitstream_vera.cpp
+	examples/imgview.cpp \
+	examples/bitstream_vera.hpp \
+	examples/bitstream_vera.cpp
 
 imgview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 
 fontview_SOURCES = \
-	src/examples/fontview.cpp \
-	src/examples/bitstream_vera.hpp \
-	src/examples/bitstream_vera.cpp
+	examples/fontview.cpp \
+	examples/bitstream_vera.hpp \
+	examples/bitstream_vera.cpp
 
 fontview_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
 
@@ -67,4 +67,5 @@ docs: Doxyfile Doxymain $(libjacui_sdl1_2_include_HEADERS)
 maintainer-clean-local:
 	rm -rf docs
 
-EXTRA_DIST = Doxyfile Doxymain docs *.sln *.props *.vcxproj *.vcxproj.user
+EXTRA_DIST = Doxyfile Doxymain docs *.sln *.props *.vcxproj \
+	examples/*.vcxproj examples/*.vcxproj.user
