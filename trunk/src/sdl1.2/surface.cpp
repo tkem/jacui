@@ -30,6 +30,7 @@
 #include "jacui/error.hpp"
 #include "detail.hpp"
 
+#include <algorithm>
 #include <cassert>
 
 using namespace jacui::detail;
@@ -98,13 +99,28 @@ namespace {
     }
 
     void warp(SDL_Surface* src, SDL_Rect* srcrect, SDL_Surface* dst, SDL_Rect* dstrect) {
-        assert(srcrect->x >= 0 && srcrect->y >= 0);
-        assert(srcrect->x + srcrect->w <= src->w);
-        assert(srcrect->y + srcrect->h <= src->h);
+        assert(src && srcrect->x >= 0 && srcrect->y >= 0);
+        assert(dst && dstrect->x >= 0 && dstrect->y >= 0);
 
-        assert(dstrect->x >= 0 && dstrect->y >= 0);
-        assert(dstrect->x + dstrect->w <= dst->w);
-        assert(dstrect->y + dstrect->h <= dst->h);
+        if (srcrect->x + srcrect->w > src->w)
+            srcrect->w = src->w - srcrect->w;
+        if (srcrect->y + srcrect->h > src->h)
+            srcrect->y = src->h - srcrect->y;
+        if (srcrect->w <= 0 || srcrect->h <= 0)
+            return;
+
+        SDL_Rect clip;
+        SDL_GetClipRect(dst, &clip);
+
+        int dx = dstrect->x + dstrect->w;
+        int dy = dstrect->y + dstrect->h;
+        dstrect->x = std::max(dstrect->x, clip.x);
+        dstrect->y = std::max(dstrect->y, clip.y);
+        dstrect->w = std::max(std::min(dx, clip.x + clip.w) - dstrect->x, 0);
+        dstrect->h = std::max(std::min(dy, clip.y + clip.h) - dstrect->y, 0);
+        
+        if (dstrect->w <= 0 || dstrect->h <= 0)
+            return;
 
         for (int y = 0; y != dstrect->h; ++y) {
             for (int x = 0; x != dstrect->w; ++x) {

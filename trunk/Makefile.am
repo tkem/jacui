@@ -45,6 +45,12 @@ libjacui_sdl1_2_la_LDFLAGS = -version-info $(SO_VERSION)
 libjacui_sdl1_2_la_CPPFLAGS = -I$(top_srcdir)/src $(SDL_CFLAGS)
 libjacui_sdl1_2_la_LIBADD = $(SDL_LIBS)
 
+check_PROGRAMS = test_blit
+
+test_blit_SOURCES = tests/test_blit.cpp
+
+test_blit_LDADD = libjacui-sdl1.2.la $(SDL_LIBS)
+
 noinst_PROGRAMS = imgview fontview
 
 imgview_SOURCES = \
@@ -67,5 +73,8 @@ docs: Doxyfile Doxymain $(libjacui_sdl1_2_include_HEADERS)
 maintainer-clean-local:
 	rm -rf docs
 
-EXTRA_DIST = Doxyfile Doxymain docs *.sln *.props *.vcxproj \
-	examples/*.vcxproj examples/*.vcxproj.user
+EXTRA_DIST = Doxyfile Doxymain docs \
+	jacui.sln sdl1.2.props jacui-sdl1.2.props jacui-sdl1.2.vcxproj \
+	examples/fontview.vcxproj examples/imgview.vcxproj
+
+TESTS = $(check_PROGRAMS)

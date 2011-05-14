@@ -1,4 +1,4 @@
-AC_INIT([jacui], [0.2.1], [perlkoenig@gmail.com], [jacui], [http://code.google.com/p/jacui/])
+AC_INIT([jacui], [0.2.2], [perlkoenig@gmail.com], [jacui], [http://code.google.com/p/jacui/])
 
 AC_PROG_CXX
 
